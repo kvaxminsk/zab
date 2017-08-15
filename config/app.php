@@ -165,6 +165,11 @@ return [
         SleepingOwl\Admin\Providers\SleepingOwlServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+//        Laravel\Socialite\SocialiteServiceProvider::class,
+        \SocialiteProviders\Manager\ServiceProvider::class,
+//        Laravel\Socialite\SocialiteServiceProvider::class,
+//        \Illuminate\Support\ServiceProvider::class,
+//        \App\Providers\SocialAccountServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -228,6 +233,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Socialite' => SocialiteProviders\Manager\ServiceProvider::class,
     ],
 
 ];

@@ -26,3 +26,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/social_login/{provider}', 'SocialController@login');
+Route::get('/social_login/callback/{provider}', 'SocialController@callback');

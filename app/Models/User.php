@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
@@ -42,6 +42,7 @@ class User extends Authenticatable
     {
         return $this->hasRole('admin');
     }
+
     public function isRoleUser()
     {
         return $this->hasRole('user');
@@ -78,5 +79,20 @@ class User extends Authenticatable
             return true;
         }
         return false;
+    }
+
+    public static function createBySocialProvider($providerUser)
+    {
+        $user = self::create([
+            'email' => $providerUser->getEmail(),
+            'username' => $providerUser->getNickname(),
+            'password' => \Hash::make(str_random(8)),
+            'name' => $providerUser->getName(),
+        ]);
+        $user
+            ->roles()
+            ->attach(Role::where('name', 'user')->first());
+        return $user;
+        //TODO вставить отправку письма на почту
     }
 }

@@ -24,37 +24,49 @@ use SleepingOwl\Admin\Navigation\Page;
 return [
     [
         'title' => 'Dashboard',
-        'icon'  => 'fa fa-dashboard',
-        'url'   => route('admin.dashboard'),
+        'icon' => 'fa fa-dashboard',
+        'url' => route('admin.dashboard'),
     ],
 
-    [
-        'title' => 'Information',
-        'icon'  => 'fa fa-exclamation-circle',
-        'url'   => route('admin.information'),
-    ],
-    [
-        'title' => 'Content',
-        'pages' => [
-            (new Page(\App\Models\CategoryModel::class))
-                ->setTitle('Categories')
-                ->setIcon('fa fa-globe')
-                ->setPriority(0),
-
-
-//            (new Page(\App\User::class))
-//                ->setPriority(100)
-//                ->setIcon('fa fa-user')
-//                ->setUrl('users')
-//                ->setAccessLogic(function (Page $page) {
-//                    return auth()->user()->isSuperAdmin();
-//                }),
+//    [
+//        'title' => 'Information',
+//        'icon'  => 'fa fa-exclamation-circle',
+//        'url'   => route('admin.information'),
+//    ],
+//    [
+//        'title' => 'Content',
+//        'pages' => [
+//            (new Page(\App\Models\CategoryModel::class))
+//                ->setTitle('Categories')
+//                ->setIcon('fa fa-globe')
+//                ->setPriority(0),
 //
-//            // or
-
-        ]
+//
+////            (new Page(\App\User::class))
+////                ->setPriority(100)
+////                ->setIcon('fa fa-user')
+////                ->setUrl('users')
+////                ->setAccessLogic(function (Page $page) {
+////                    return auth()->user()->isSuperAdmin();
+////                }),
+////
+////            // or
+//
+//        ]
+//    ],
+    (new Page(\App\Models\CategoryModel::class))
+        ->setTitle('Categories')
+        ->setIcon('fa fa-globe')
+        ->setPriority(0),
+    [
+        'title' => 'User information',
+        'pages' => [
+            (new Page(\App\Models\User::class))
+                ->setTitle('Users')
+                ->setIcon('fa fa-user')
+                ->setPriority(1)
+        ],
     ]
-
     // Examples
     // [
     //    'title' => 'Content',
@@ -86,9 +98,9 @@ return [
     //                'title'    => 'Blog',
     //                'priority' => 100,
     //                'model'    => \App\Blog::class
-	//		      ));
+    //		      ));
     //
-	//		      $page->addPage(\App\Blog::class);
+    //		      $page->addPage(\App\Blog::class);
     //	      }),
     //
     //        // or

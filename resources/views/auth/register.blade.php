@@ -42,7 +42,7 @@
                             <label for="password" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control" name="password" required minlength="8">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -68,6 +68,8 @@
                             </div>
                         </div>
                     </form>
+                    <div class="btn btn-custom5 btn-lg copy_but"><a href="{{$url = URL::to('social_login/twitter')}}">Twitter</a></div>
+                    <div class="btn btn-custom5 btn-lg copy_but"><a href="{{$url = URL::to('social_login/vkontakte')}}">VK</a></div>
                 </div>
             </div>
         </div>

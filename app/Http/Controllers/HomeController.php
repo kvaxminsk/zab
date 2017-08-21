@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -28,7 +27,9 @@ class HomeController extends Controller
 
 //        var_dump(User::getCurrentUser()->isRoleAdmin());die();
         $request->user()->authorizeRoles(['user', 'manager', 'admin']);
-
-        return view('home');
+        $user = User::getCurrentUser();
+        return view('home', [
+            'user' => $user
+        ]);
     }
 }

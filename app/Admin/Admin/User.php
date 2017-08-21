@@ -13,6 +13,7 @@ AdminSection::registerModel(\App\Models\User::class, function (\SleepingOwl\Admi
             ->setColumns([
                 AdminColumn::text('id')->setLabel('ID'),
                 AdminColumn::email('email')->setLabel('Email'),
+                AdminColumn::text('phone')->setLabel('Phone'),
             ])
             ->paginate(10);
     });

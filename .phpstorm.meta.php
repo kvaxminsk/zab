@@ -50,6 +50,8 @@ namespace PHPSTORM_META {
         'KodiComponents\Navigation\Contracts\BadgeInterface' => \SleepingOwl\Admin\Navigation\Badge::class,
         'sleeping_owl.navigation' => \SleepingOwl\Admin\Navigation::class,
         'sleeping_owl.widgets' => \SleepingOwl\Admin\Widgets\WidgetsRegistry::class,
+        'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'sleeping_owl.message' => \SleepingOwl\Admin\Widgets\Messages\MessageStack::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -141,6 +143,8 @@ namespace PHPSTORM_META {
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
+        'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
     ]));
     override(\Illuminate\Contracts\Container\Container::make(0), map([
@@ -185,6 +189,8 @@ namespace PHPSTORM_META {
         'KodiComponents\Navigation\Contracts\BadgeInterface' => \SleepingOwl\Admin\Navigation\Badge::class,
         'sleeping_owl.navigation' => \SleepingOwl\Admin\Navigation::class,
         'sleeping_owl.widgets' => \SleepingOwl\Admin\Widgets\WidgetsRegistry::class,
+        'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'sleeping_owl.message' => \SleepingOwl\Admin\Widgets\Messages\MessageStack::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -276,6 +282,8 @@ namespace PHPSTORM_META {
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
+        'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
     ]));
     override(\Illuminate\Contracts\Container\Container::makeWith(0), map([
@@ -320,6 +328,8 @@ namespace PHPSTORM_META {
         'KodiComponents\Navigation\Contracts\BadgeInterface' => \SleepingOwl\Admin\Navigation\Badge::class,
         'sleeping_owl.navigation' => \SleepingOwl\Admin\Navigation::class,
         'sleeping_owl.widgets' => \SleepingOwl\Admin\Widgets\WidgetsRegistry::class,
+        'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'sleeping_owl.message' => \SleepingOwl\Admin\Widgets\Messages\MessageStack::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -411,6 +421,8 @@ namespace PHPSTORM_META {
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
+        'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
     ]));
     override(\App::make(0), map([
@@ -455,6 +467,8 @@ namespace PHPSTORM_META {
         'KodiComponents\Navigation\Contracts\BadgeInterface' => \SleepingOwl\Admin\Navigation\Badge::class,
         'sleeping_owl.navigation' => \SleepingOwl\Admin\Navigation::class,
         'sleeping_owl.widgets' => \SleepingOwl\Admin\Widgets\WidgetsRegistry::class,
+        'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'sleeping_owl.message' => \SleepingOwl\Admin\Widgets\Messages\MessageStack::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -546,6 +560,8 @@ namespace PHPSTORM_META {
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
+        'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
     ]));
     override(\App::makeWith(0), map([
@@ -590,6 +606,8 @@ namespace PHPSTORM_META {
         'KodiComponents\Navigation\Contracts\BadgeInterface' => \SleepingOwl\Admin\Navigation\Badge::class,
         'sleeping_owl.navigation' => \SleepingOwl\Admin\Navigation::class,
         'sleeping_owl.widgets' => \SleepingOwl\Admin\Widgets\WidgetsRegistry::class,
+        'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'sleeping_owl.message' => \SleepingOwl\Admin\Widgets\Messages\MessageStack::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -681,6 +699,8 @@ namespace PHPSTORM_META {
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
+        'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
     ]));
     override(\app(0), map([
@@ -725,6 +745,8 @@ namespace PHPSTORM_META {
         'KodiComponents\Navigation\Contracts\BadgeInterface' => \SleepingOwl\Admin\Navigation\Badge::class,
         'sleeping_owl.navigation' => \SleepingOwl\Admin\Navigation::class,
         'sleeping_owl.widgets' => \SleepingOwl\Admin\Widgets\WidgetsRegistry::class,
+        'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'sleeping_owl.message' => \SleepingOwl\Admin\Widgets\Messages\MessageStack::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -816,6 +838,8 @@ namespace PHPSTORM_META {
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
+        'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
     ]));
     override(\resolve(0), map([
@@ -860,6 +884,8 @@ namespace PHPSTORM_META {
         'KodiComponents\Navigation\Contracts\BadgeInterface' => \SleepingOwl\Admin\Navigation\Badge::class,
         'sleeping_owl.navigation' => \SleepingOwl\Admin\Navigation::class,
         'sleeping_owl.widgets' => \SleepingOwl\Admin\Widgets\WidgetsRegistry::class,
+        'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'sleeping_owl.message' => \SleepingOwl\Admin\Widgets\Messages\MessageStack::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -951,6 +977,8 @@ namespace PHPSTORM_META {
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
+        'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
     ]));
 

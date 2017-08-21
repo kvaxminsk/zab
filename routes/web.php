@@ -17,16 +17,30 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 
 Route::get('/social_login/{provider}', 'SocialController@login');
 Route::get('/social_login/callback/{provider}', 'SocialController@callback');
+Route::group([ 'middleware' => ['auth'], 'prefix' => 'dashboard'] , function() {
+
+
+    Route::group([ 'middleware' => ['auth'], 'prefix' => 'profile'] , function() {
+//        Route::any('/', 'Dashboard\ProfileController@showProfilePage')->name('userProfilePage');
+        Route::get('/edit', 'Dashboard\ProfileController@editProfilePage')->name('editUserProfilePage');
+        Route::get('/{id}', 'Dashboard\ProfileController@showProfilePage')->name('userProfilePage');
+
+        Route::post('/save', 'Dashboard\ProfileController@saveProfile')->name('saveUsersProfileProcess');
+    });
+
+
+
+});

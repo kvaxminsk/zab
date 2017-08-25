@@ -58,6 +58,10 @@ return [
         ->setTitle('Categories')
         ->setIcon('fa fa-globe')
         ->setPriority(0),
+    (new Page(\App\Models\AdvertModel::class))
+        ->setTitle('Adverts')
+        ->setIcon('fa fa-globe')
+        ->setPriority(0),
     [
         'title' => 'User information',
         'pages' => [

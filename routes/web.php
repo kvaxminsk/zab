@@ -30,17 +30,23 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 Route::get('/social_login/{provider}', 'SocialController@login');
 Route::get('/social_login/callback/{provider}', 'SocialController@callback');
-Route::group([ 'middleware' => ['auth'], 'prefix' => 'dashboard'] , function() {
+Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
 
 
-    Route::group([ 'middleware' => ['auth'], 'prefix' => 'profile'] , function() {
+    Route::group(['middleware' => ['auth'], 'prefix' => 'profile'], function () {
 //        Route::any('/', 'Dashboard\ProfileController@showProfilePage')->name('userProfilePage');
         Route::get('/edit', 'Dashboard\ProfileController@editProfilePage')->name('editUserProfilePage');
         Route::get('/{id}', 'Dashboard\ProfileController@showProfilePage')->name('userProfilePage');
 
         Route::post('/save', 'Dashboard\ProfileController@saveProfile')->name('saveUsersProfileProcess');
     });
-
+    Route::group(['middleware' => ['auth'], 'prefix' => 'adverts'], function () {
+        Route::get('/show_user_adverts', 'Dashboard\AdvertsController@showUserAdverts')->name('showUserAdverts');
+        Route::get('/delete/{id}', 'Dashboard\AdvertsController@deleteAdvert')->name('deleteAdvert');
+        Route::get('/edit/{id}', 'Dashboard\AdvertsController@editAdvert')->name('editAdvert');
+//        Route::get('/edit/{id}', '')->name('advertEditPage');
+//        Route::get('/add', '')->name('advertAddPage');
+    });
 
 
 });

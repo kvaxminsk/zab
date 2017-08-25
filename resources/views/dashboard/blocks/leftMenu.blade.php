@@ -25,23 +25,27 @@
         <!-- SIDEBAR MENU -->
         <div class="profile-usermenu">
             <ul class="nav">
-                <li class="active">
+                <li {!! classActiveSegment(2, 'profile') !!}>
                     <a href="{{route('userProfilePage', ['id'=>$user->id])}}">
                         <i class="glyphicon glyphicon-home"></i>
                         Профиль </a>
                 </li>
-                <li>
-                    <a href="#">
+                <li {!! classActiveSegment(3, 'show_user_adverts') !!}>
+                    <a href="{{route('showUserAdverts')}}">
                         <i class="glyphicon glyphicon-user"></i>
                         Объявления </a>
-                </li>
+                </li >
                 @if(Auth::user()->id == $user->id)
-                    <li>
+                    <li {!! classActiveSegment(3, 'edit') !!}>
                         <a href="{{route('editUserProfilePage')}}">
                             <i class="glyphicon glyphicon-user"></i>
                             Редактировать профиль </a>
                     </li>
-
+                    <li {!! classActiveSegment(2, 'cashout') !!}>
+                        <a href="{{route('showUserAdverts')}}">
+                            <i class="glyphicon glyphicon-user"></i>
+                            Добавить объявление </a>
+                    </li>
                 @endif
             </ul>
         </div>

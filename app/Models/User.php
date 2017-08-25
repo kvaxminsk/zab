@@ -133,4 +133,9 @@ class User extends Authenticatable
         return $user;
         //TODO вставить отправку письма на почту
     }
+
+    public function adverts()
+    {
+        return $this->hasMany(AdvertModel::class, 'user_id');
+    }
 }

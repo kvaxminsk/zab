@@ -28,8 +28,6 @@ class HomeController extends Controller
 //        var_dump(User::getCurrentUser()->isRoleAdmin());die();
         $request->user()->authorizeRoles(['user', 'manager', 'admin']);
         $user = User::getCurrentUser();
-        return view('home', [
-            'user' => $user
-        ]);
+        return view('home', []);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\AdvertModel;
+use App\Models\CategoryModel;
 use Illuminate\Support\Facades\Input;
 
 class AdvertsController extends Controller
@@ -31,30 +32,41 @@ class AdvertsController extends Controller
 
     public function editAdvert(\Request $request, $advert_id)
     {
-        $user = \Auth::user();
         $advert = AdvertModel::find($advert_id);
-        return view('dashboard.adverts.editUserAdvert', ['advert' => $advert]);
+        $categories = CategoryModel::whereNotNull('parent_id')->pluck('name', 'id');
+//        var_dump($categories);
+        return view('dashboard.adverts.editUserAdvert', ['advert' => $advert, 'categories' => $categories]);
     }
 
     public function postEditAdvert(\Request $request)
     {
-        $rules = array(
-            'title' => 'required:min:4',
-            'description' => 'required|min:10',
-            'advert_id' => 'required|integer',
-//            'email' => 'required|email|unique:users'
-        );
-        $validator = \Validator::make(
-//            Input::all(),
-            Input::all(),
-            $rules
-        );
-        $user = \Auth::user();
-        $advert = AdvertModel::find(Input::get('advert_id'));
-        $input  = Input::except('advert_id');
-        if ($validator->passes()) {
-            $advert->save($input);
+//        if ($request::has('images'))
+        {
+            $files = $request::file('images');
+            foreach ($files as $file){
+//                $filename = $file::getClientOriginalName();
+                \Storage::put('fff/'.$file->getClientOriginalName(), file_get_contents($file));
+            }
         }
-        return view('dashboard.adverts.editUserAdvert', ['advert' => $advert]);
+die();
+//        $rules = array(
+//            'title' => 'required:min:4',
+//            'description' => 'required|min:10',
+//            'advert_id' => 'required|integer',
+////            'email' => 'required|email|unique:users'
+//        );
+//        $validator = \Validator::make(
+////            Input::all(),
+//            Input::all(),
+//            $rules
+//        );
+//        $user = \Auth::user();
+        $advert = AdvertModel::find(Input::get('advert_id'));
+//        $input  = Input::except('advert_id');
+//        if ($validator->passes()) {
+//            $advert->update($input);
+//            $advert->save();
+//        }
+        return redirect(route('editAdvert', ['advert_id' => $advert->id]));
     }
 }

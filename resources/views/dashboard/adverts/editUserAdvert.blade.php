@@ -21,17 +21,53 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    {{ Form::open(array('route' => array('postEditAdvert'),'method' => 'post')) }}
-                        {{Form::hidden('advert_id', $advert->id)}}
-                        {{Form::text('title',$advert->title)}}
-                        {{Form::text('description',$advert->description)}}
-                        {{Form::submit('Click Me!')}}
+                    {{ Form::open(array('route' => array('postEditAdvert'),'method' => 'post','class'=>'form-horizontal','files' => true)) }}
+                    {{Form::hidden('advert_id', $advert->id)}}
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Название:</label>
+                        <div class="col-lg-8">
+                            {{Form::text('title',$advert->title,array('class' => 'form-control'))}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Категория:</label>
+                        <div class="col-lg-8">
+                            <div class="ui-select">
+                                {!!Form::select('category_id', $categories,array('class' => 'form-control'))!!}
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Описание:</label>
+                        <div class="col-lg-8">
+                            {{Form::text('description',$advert->description,array('class' => 'form-control'))}}
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Загрузить фотографии</label>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="text-center">
+                                {{--{{Form::file('images',['class'])}}--}}
+                                <input type="file" class="text-center center-block well well-sm" name="images[]" multiple>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-8">
+                            {{Form::submit('Сохранить',array('class'=>'btn btn-primary'))}}
+                        </div>
+
+                    </div>
+
                     {{ Form::close() }}
 
                 </div>
                 <div class="panel-footer">
                     <div class="row">
-<!--                        --><?php //echo $adverts->render(); ?>
+                        <!--                        --><?php //echo $adverts->render(); ?>
                     </div>
                 </div>
             </div>
@@ -40,4 +76,4 @@
     </div>
 
 
-@endsection
+    @endsection

@@ -42,7 +42,7 @@
                             Редактировать профиль </a>
                     </li>
                     <li {!! classActiveSegment(2, 'cashout') !!}>
-                        <a href="{{route('showUserAdverts')}}">
+                        <a href="{{route('addAdvert')}}">
                             <i class="glyphicon glyphicon-user"></i>
                             Добавить объявление </a>
                     </li>

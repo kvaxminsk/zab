@@ -11,11 +11,13 @@
     "php": ">=5.6.4",
     "barryvdh/laravel-debugbar": "*",
     "barryvdh/laravel-ide-helper": "dev-master",
+    "intervention/image": "^2.4",
     "laravel/framework": "5.4.*",
     "laravel/socialite": "*",
     "laravel/tinker": "~1.0",
     "laravelrus/sleepingowl": "4.*@dev",
-    "socialiteproviders/vkontakte": "^3.0"
+    "socialiteproviders/vkontakte": "^3.0",
+    "unisharp/laravel-filemanager": "^1.8"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",

@@ -290,9 +290,10 @@ if (!function_exists('rus2translit')) {
 if (!function_exists('str2url')) {
     function str2url($str) {
         // переводим в транслит
-        $str = rus2translit($str);
+//        $str = rus2translit($str);
         // в нижний регистр
         $str = mb_strtolower($str);
+//        var_dump($str);
         // заменям все ненужное нам на "-"
         $str = preg_replace('~[^-a-z0-9_]+~u', '-', $str);
         // удаляем начальные и конечные '-'

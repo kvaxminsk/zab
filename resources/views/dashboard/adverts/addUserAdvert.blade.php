@@ -21,12 +21,11 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    {{ Form::open(array('route' => array('postEditAdvert','advert_id'=>$advert->id),'method' => 'post','class'=>'form-horizontal','files' => true)) }}
-                    {{Form::hidden('advert_id', $advert->id)}}
+                    {{ Form::open(array('route' => array('postAddAdvert'),'method' => 'post','class'=>'form-horizontal','files' => true)) }}
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Название:</label>
                         <div class="col-lg-8">
-                            {{Form::text('title',$advert->title,array('class' => 'form-control'))}}
+                            {{Form::text('title','',array('class' => 'form-control'))}}
                         </div>
                     </div>
                     <div class="form-group">
@@ -41,7 +40,7 @@
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Описание:</label>
                         <div class="col-lg-8">
-                            {{Form::text('description',$advert->description,array('class' => 'form-control'))}}
+                            {{Form::text('description','',array('class' => 'form-control'))}}
                         </div>
 
                     </div>
@@ -49,12 +48,11 @@
                         <label class="col-md-3 control-label">Загрузить фотографии</label>
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="text-center">
-                                {{Form::file('images[]',['class'=>'text-center center-block well well-sm','multiple'=>"multiple"])}}
-
+                                {{--{{Form::file('images',['class'])}}--}}
+                                <input type="file" class="text-center center-block well well-sm" name="images[]" multiple>
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="col-md-3 control-label"></label>
                         <div class="col-md-8">
@@ -62,31 +60,6 @@
                         </div>
 
                     </div>
-
-                    <table class="table table-striped table-bordered table-list">
-                        <thead>
-                        <tr>
-                            <th>Заголовок</th>
-                            <th><em class="fa fa-delicious "></em></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <div class="container">
-                            @foreach ($images as $image)
-                                <tr>
-                                    <td><img src="{{Storage::disk('public')->url($image->filename)}}" width="100" height="100"></td>
-                                    <td align="center">
-                                        <a class="btn btn-danger" href="{{route('deleteAdvertImage',['image_id'=>$image->id])}}"><em
-                                                    class="fa fa-trash"></em></a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </div>
-
-                        </tbody>
-                    </table>
-
-
 
                     {{ Form::close() }}
 

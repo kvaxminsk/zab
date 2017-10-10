@@ -30,6 +30,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AdvertModel withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\AdvertModel withoutTrashed()
  * @mixin \Eloquent
+ * @method static bool|null forceDelete()
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\AdvertModel onlyTrashed()
+ * @method static bool|null restore()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AdvertModel whereDeletedAt($value)
  */
 class AdvertModel extends Model
 {

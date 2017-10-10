@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2017-10-06.
+    * Generated on 2017-10-10 15:15:17.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -52,6 +52,7 @@ namespace PHPSTORM_META {
         'sleeping_owl.widgets' => \SleepingOwl\Admin\Widgets\WidgetsRegistry::class,
         'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'image' => \Intervention\Image\ImageManager::class,
         'sleeping_owl.message' => \SleepingOwl\Admin\Widgets\Messages\MessageStack::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -143,6 +144,7 @@ namespace PHPSTORM_META {
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
+        'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
         'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
@@ -191,6 +193,7 @@ namespace PHPSTORM_META {
         'sleeping_owl.widgets' => \SleepingOwl\Admin\Widgets\WidgetsRegistry::class,
         'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'image' => \Intervention\Image\ImageManager::class,
         'sleeping_owl.message' => \SleepingOwl\Admin\Widgets\Messages\MessageStack::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -282,6 +285,7 @@ namespace PHPSTORM_META {
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
+        'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
         'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
@@ -330,6 +334,7 @@ namespace PHPSTORM_META {
         'sleeping_owl.widgets' => \SleepingOwl\Admin\Widgets\WidgetsRegistry::class,
         'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'image' => \Intervention\Image\ImageManager::class,
         'sleeping_owl.message' => \SleepingOwl\Admin\Widgets\Messages\MessageStack::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -421,6 +426,7 @@ namespace PHPSTORM_META {
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
+        'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
         'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
@@ -469,6 +475,7 @@ namespace PHPSTORM_META {
         'sleeping_owl.widgets' => \SleepingOwl\Admin\Widgets\WidgetsRegistry::class,
         'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'image' => \Intervention\Image\ImageManager::class,
         'sleeping_owl.message' => \SleepingOwl\Admin\Widgets\Messages\MessageStack::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -560,6 +567,7 @@ namespace PHPSTORM_META {
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
+        'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
         'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
@@ -608,6 +616,7 @@ namespace PHPSTORM_META {
         'sleeping_owl.widgets' => \SleepingOwl\Admin\Widgets\WidgetsRegistry::class,
         'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'image' => \Intervention\Image\ImageManager::class,
         'sleeping_owl.message' => \SleepingOwl\Admin\Widgets\Messages\MessageStack::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -699,6 +708,7 @@ namespace PHPSTORM_META {
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
+        'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
         'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
@@ -747,6 +757,7 @@ namespace PHPSTORM_META {
         'sleeping_owl.widgets' => \SleepingOwl\Admin\Widgets\WidgetsRegistry::class,
         'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'image' => \Intervention\Image\ImageManager::class,
         'sleeping_owl.message' => \SleepingOwl\Admin\Widgets\Messages\MessageStack::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -838,6 +849,7 @@ namespace PHPSTORM_META {
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
+        'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
         'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
@@ -886,6 +898,7 @@ namespace PHPSTORM_META {
         'sleeping_owl.widgets' => \SleepingOwl\Admin\Widgets\WidgetsRegistry::class,
         'debugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'image' => \Intervention\Image\ImageManager::class,
         'sleeping_owl.message' => \SleepingOwl\Admin\Widgets\Messages\MessageStack::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -977,6 +990,7 @@ namespace PHPSTORM_META {
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
+        'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
         'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
         'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
@@ -1010,5 +1024,6 @@ namespace PHPSTORM_META {
     override(\head(0), elementType(0));
     override(\last(0), elementType(0));
     override(\with(0), type(0));
+    override(\tap(0), type(0));
 
 }

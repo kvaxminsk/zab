@@ -16,7 +16,7 @@
                             <h3 class="panel-title"></h3>
                         </div>
                         <div class="col col-xs-6 text-right">
-                            <button type="button" class="btn btn-sm btn-primary btn-create">Добавить Объявление</button>
+                            <a href="{{route('addAdvert')}}" type="button" class="btn btn-sm btn-primary btn-create">Добавить Объявление</a>
                         </div>
                     </div>
                 </div>

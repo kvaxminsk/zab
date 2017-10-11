@@ -16,13 +16,11 @@
                 </div>
                 <hr>
                 <ul class="container details">
-                    <li><p><span class="glyphicon glyphicon-earphone one" style="width:50px;"></span>+91 90000 00000</p>
-                    </li>
-                    <li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{$user->email}}
+                    {{--<li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{$user->email}}--}}
                         </p></li>
-                    <li><p><span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span>{{$user->email}}
+                    <li><p><span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span>{{$user->country_id}}
                         </p></li>
-                    <li><p><span class="glyphicon glyphicon-new-window one" style="width:50px;"></span>{{$user->email}}
+                    <li><p><span class="glyphicon glyphicon-new-window one" style="width:50px;"></span>{{$user->city_id}}
                         </p>
                 </ul>
             </div>

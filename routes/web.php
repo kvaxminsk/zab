@@ -34,12 +34,16 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
 
 
     Route::group(['middleware' => ['auth'], 'prefix' => 'profile'], function () {
+        Route::get('/regions', 'Dashboard\ProfileController@regions')->name('regions');
+        Route::get('/cities', 'Dashboard\ProfileController@cities')->name('cities');
 //        Route::any('/', 'Dashboard\ProfileController@showProfilePage')->name('userProfilePage');
         Route::get('/edit', 'Dashboard\ProfileController@editProfilePage')->name('editUserProfilePage');
         Route::post('/edit', 'Dashboard\ProfileController@postEditProfile')->name('postUserEditProfile');
+        Route::post('/save', 'Dashboard\ProfileController@saveProfile')->name('saveUsersProfileProcess');
         Route::get('/{id}', 'Dashboard\ProfileController@showProfilePage')->name('userProfilePage');
 //        showProfilePage
-        Route::post('/save', 'Dashboard\ProfileController@saveProfile')->name('saveUsersProfileProcess');
+
+
     });
     Route::group(['middleware' => ['auth'], 'prefix' => 'adverts'], function () {
         Route::get('/show_user_adverts', 'Dashboard\AdvertsController@showUserAdverts')->name('showUserAdverts');

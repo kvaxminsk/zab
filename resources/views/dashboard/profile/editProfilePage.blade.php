@@ -18,7 +18,7 @@
             </div>
 
         </div>
-        <div class="row">|
+        <div class="row">
             <div class="panel-body">
 
                 {{Form::hidden('advert_id', $user->id)}}
@@ -43,13 +43,19 @@
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Страна</label>
                     <div class="col-lg-8">
-                        {{Form::text('country_id',$user->country_id,array('class' => 'form-control'))}}
+                        {!!Form::select('country_id', $countries,$user->country_id,array('class' => 'form-control','id'=>'country_id',))!!}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Область</label>
+                    <div class="col-lg-8">
+                        {!!Form::select('region_id', $regions,$user->region_id,array('class' => 'form-control','id'=>'region_id'))!!}
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Город</label>
                     <div class="col-lg-8">
-                        {{Form::text('city_id',$user->city_id,array('class' => 'form-control'))}}
+                        {!!Form::select('city_id', $cities,$user->city_id,array('class' => 'form-control','id'=>'city_id'))!!}
                     </div>
                 </div>
                 <div class="form-group">

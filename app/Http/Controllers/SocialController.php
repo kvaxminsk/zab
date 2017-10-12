@@ -14,6 +14,11 @@ class SocialController extends Controller
     {
         return Socialite::with($provider)->redirect();
     }
+    public function logout()
+    {
+        \Auth::logout();
+        return redirect(route('dashboard'));
+    }
 
     public function callback(SocialAccountServiceProvider $service, $provider)
     {

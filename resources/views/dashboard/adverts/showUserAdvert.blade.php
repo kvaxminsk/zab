@@ -25,7 +25,6 @@
                         <thead>
                         <tr>
                             <th>Заголовок</th>
-                            <th>Дата</th>
                             <th>Статус</th>
                             <th><em class="fa fa-cog"></em></th>
                         </tr>
@@ -35,8 +34,7 @@
                             @foreach ($adverts as $advert)
                                 <tr>
                                     <td>{{$advert->title}}</td>
-                                    <td>{{$advert->create_at}}</td>
-                                    <td>{{$advert->status}}</td>
+                                    <td>{{$advert->status->title}}</td>
                                     <td align="center">
                                         <a class="btn btn-default"
                                            href="{{route('editAdvert',['id'=>$advert->id])}}"><em

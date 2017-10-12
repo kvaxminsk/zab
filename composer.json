@@ -17,6 +17,7 @@
     "laravel/tinker": "~1.0",
     "laravelrus/sleepingowl": "4.*@dev",
     "socialiteproviders/vkontakte": "^3.0",
+    "twbs/bootstrap": "^3.3",
     "unisharp/laravel-filemanager": "^1.8"
   },
   "require-dev": {

@@ -21,14 +21,15 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 Auth::routes();
 
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
-
-Auth::routes();
+//Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+//
+//Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 
 Route::get('/social_login/{provider}', 'SocialController@login');
+Route::get('/logout', 'SocialController@logout');
 Route::get('/social_login/callback/{provider}', 'SocialController@callback');
 Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
 

@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Описание:</label>
                         <div class="col-lg-8">
-                            {{Form::text('description','',array('class' => 'form-control'))}}
+                            {{Form::textarea('description','',array('class' => 'form-control'))}}
                         </div>
 
                     </div>

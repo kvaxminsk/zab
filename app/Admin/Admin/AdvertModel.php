@@ -9,21 +9,25 @@ AdminSection::registerModel(AdvertModel::class, function (ModelConfiguration $mo
         return AdminDisplay::table()
             ->with('user')
             ->with('category')
+            ->with('status')
             ->setHtmlAttribute('class', 'table-primary')
             ->setColumns([
                 AdminColumn::text('id')->setLabel('ID'),
                 AdminColumn::text('title')->setLabel('Title'),
                 AdminColumn::text('user.name')->setLabel('User'),
                 AdminColumn::text('category.name')->setLabel('Category'),
-                AdminColumn::text('status')->setLabel('Status'),
+                AdminColumn::text('status.title')->setLabel('Status'),
 
             ])
             ->paginate(20);
     });
     $model->onEdit(function($id = null) {
         $form = AdminForm::panel()->addHeader(
-            AdminFormElement::text('status', 'Status')->required(),
-            AdminFormElement::text('description', 'Description')->setDefaultValue('')->addValidationRule('max:255'),
+            AdminFormElement::select('adverts_status_id', 'Status')
+                ->setModelForOptions(new \App\Models\AdvertsStatusModel())
+                ->setDisplay('title'),
+            AdminFormElement::text('description', 'Description')->setDefaultValue(''),
+            AdminFormElement::text('title', 'Description')->setDefaultValue('')->addValidationRule('max:500'),
             AdminFormElement::select('category_id', 'Category')
                 ->setModelForOptions(new \App\Models\CategoryModel())
                 ->setDisplay('name')

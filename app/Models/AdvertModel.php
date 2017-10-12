@@ -43,7 +43,7 @@ class AdvertModel extends Model
 
     protected $dates = ['deleted_at'];
 
-    public $fillable = ['title', 'user_id', 'category_id', 'description', 'status'];
+    public $fillable = ['title', 'user_id', 'category_id', 'description', 'adverts_status_id'];
 
     public function user()
     {
@@ -52,5 +52,10 @@ class AdvertModel extends Model
     public function category()
     {
         return $this->belongsTo('App\Models\CategoryModel','category_id');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(AdvertsStatusModel::class, 'adverts_status_id','id');
     }
 }

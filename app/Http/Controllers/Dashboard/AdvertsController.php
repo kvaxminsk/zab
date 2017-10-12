@@ -82,7 +82,7 @@ class AdvertsController extends Controller
                 \Storage::put($path, file_get_contents($file));
                 AdvertsImageModel::create([
                     'advert_id' => $advert->id,
-                    'filename' => $path,
+                    'path' => $path,
                     'user_id' => $user->id,
                 ]);
             }
@@ -95,12 +95,10 @@ class AdvertsController extends Controller
 
     public function postEditAdvert(\Request $request)
     {
-//    $categories = CategoryModel::whereNotNull('parent_id')->pluck('name', 'id');
-//        var_dump();
-//        die();
         $rules = array(
             'title' => 'required:min:4:max:50',
             'description' => 'required|min:10',
+            'address' => 'string',
         );
         $advert_id = (int)$request::get('advert_id');
         $input = Input::all();
@@ -125,7 +123,7 @@ class AdvertsController extends Controller
                     \Storage::put($path, file_get_contents($file));
                     AdvertsImageModel::create([
                         'advert_id' => $advert->id,
-                        'filename' => $path,
+                        'path' => $path,
                         'user_id' => $user->id,
                     ]);
                 }

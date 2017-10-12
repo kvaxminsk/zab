@@ -15,12 +15,25 @@ class ProfileController extends Controller
 {
     public function showProfilePage(\Request $request, $id = null)
     {
-        $user = \Auth::user();
+        if ($id) {
+            $user = User::find($id);
+            if ($user) {
+                return view('dashboard.profile.profilePage', [
+                    'user' => $user,
 
-        return view('dashboard.profile.profilePage', [
-            'user' => $user,
+                ]);
+            } else {
+                return redirect(route('dashboard'));
+            }
+        } else {
+            $user = \Auth::user();
 
-        ]);
+            return view('dashboard.profile.profilePage', [
+                'user' => $user,
+
+            ]);
+        }
+
 
     }
 
@@ -35,6 +48,7 @@ class ProfileController extends Controller
             'type' => 'success', 'regions' => $regions
         ]);
     }
+
     public function cities(\Request $request)
     {
         $request::get('country_id');
@@ -51,24 +65,23 @@ class ProfileController extends Controller
         try {
             $usersImagePath = UsersImageModel::where('user_id', $user->id)->orderBy('id', 'desc')->first()->path;
         } catch (\ErrorException $e) {
-            $usersImagePath = 'https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png';
+            $usersImagePath = null;
         }
+
         $countries = CountryModel::all(['title_ru', 'country_id'])->sortBy('title_ru')->pluck('title_ru', 'country_id');
-        if($user->country_id){
+        if ($user->country_id) {
             $regions[0] = 'Выберите регион';
             $regions += RegionModel::where('country_id', $user->country_id)->get(['title_ru', 'region_id'])->sortBy('title_ru')->pluck('title_ru', 'region_id')->toArray();
 //            array_unshift($regions, 'Выберите регион');
 //            asort($regions);
-        }
-        else{
+        } else {
             $regions = ['0' => 'Выберите регион'];
         }
 
-        if($user->region_id){
+        if ($user->region_id) {
             $cities[0] = 'Выберите город';
             $cities += CityModel::where('region_id', $user->region_id)->get(['title_ru', 'city_id'])->sortBy('title_ru')->pluck('title_ru', 'city_id')->toArray();
-        }
-        else{
+        } else {
             $cities = ['0' => 'Выберите город'];
         }
 

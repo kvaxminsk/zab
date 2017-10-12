@@ -16,7 +16,8 @@
                             <h3 class="panel-title"></h3>
                         </div>
                         <div class="col col-xs-6 text-right">
-                            <a href="{{route('addAdvert')}}" type="button" class="btn btn-sm btn-primary btn-create">Добавить Объявление</a>
+                            <a href="{{route('addAdvert')}}" type="button" class="btn btn-sm btn-primary btn-create">Добавить
+                                Объявление</a>
                         </div>
                     </div>
                 </div>
@@ -32,7 +33,16 @@
                         <label class="col-lg-3 control-label">Категория:</label>
                         <div class="col-lg-8">
                             <div class="ui-select">
-                                {!!Form::select('category_id', $categories,array('class' => 'form-control'))!!}
+                                {!!Form::select('category_id', $categories,null,array('class' => 'form-control'))!!}
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Адрес:</label>
+                        <div class="col-lg-8">
+                            <div class="ui-select">
+                                {!!Form::text('address', null,array('class' => 'form-control'))!!}
                             </div>
 
                         </div>
@@ -40,7 +50,7 @@
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Описание:</label>
                         <div class="col-lg-8">
-                            {{Form::textarea('description','',array('class' => 'form-control'))}}
+                            {{Form::textarea('description',null,array('class' => 'form-control'))}}
                         </div>
 
                     </div>
@@ -49,7 +59,8 @@
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="text-center">
                                 {{--{{Form::file('images',['class'])}}--}}
-                                <input type="file" class="text-center center-block well well-sm" name="images[]" multiple>
+                                <input type="file" class="text-center center-block well well-sm" name="images[]"
+                                       multiple>
                             </div>
                         </div>
                     </div>

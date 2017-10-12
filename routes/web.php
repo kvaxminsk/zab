@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+
 
 Auth::routes();
 
@@ -25,14 +25,14 @@ Auth::routes();
 //
 //Auth::routes();
 
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('/dashboard', 'Dashboard\DashboardController@index')->name('dashboard');
 
 
 Route::get('/social_login/{provider}', 'SocialController@login');
 Route::get('/logout', 'SocialController@logout');
 Route::get('/social_login/callback/{provider}', 'SocialController@callback');
-Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
-
+Route::group( ['prefix' => 'dashboard'], function () {
+    Route::get('/', 'Dashboard\DashboardController@index')->name('dashboard');
 
     Route::group(['middleware' => ['auth'], 'prefix' => 'profile'], function () {
         Route::get('/regions', 'Dashboard\ProfileController@regions')->name('regions');

@@ -33,7 +33,7 @@
                         <label class="col-lg-3 control-label">Категория:</label>
                         <div class="col-lg-8">
                             <div class="ui-select">
-                                {!!Form::select('category_id', $categories,array('class' => 'form-control'))!!}
+                                {!!Form::select('category_id', $categories,null,array('class' => 'form-control'))!!}
                             </div>
 
                         </div>
@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Описание:</label>
                         <div class="col-lg-8">
-                            {{Form::text('description',$advert->description,array('class' => 'form-control'))}}
+                            {{Form::textarea('description',$advert->description,array('class' => 'form-control'))}}
                         </div>
 
                     </div>
@@ -74,7 +74,7 @@
                         <div class="container">
                             @foreach ($images as $image)
                                 <tr>
-                                    <td><img src="{{Storage::disk('public')->url($image->filename)}}" width="100" height="100"></td>
+                                    <td><img src="{{Storage::disk('public')->url($image->path)}}" width="100" height="100"></td>
                                     <td align="center">
                                         <a class="btn btn-danger" href="{{route('deleteAdvertImage',['image_id'=>$image->id])}}"><em
                                                     class="fa fa-trash"></em></a>

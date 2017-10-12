@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src=""></script>
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name','ЗабирайДаром.BY') }}</title>
     {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>--}}
     {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>--}}
     {{--<script src="https://code.jquery.com/jquery.min.js"></script>--}}
@@ -55,8 +55,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="{{ route('register') }}">Register</a></li>
+                        <li><a href="{{ route('login') }}">Войти</a></li>
+                        <li><a href="{{ route('register') }}">Регистрация</a></li>
                     @else
                         <li><a href="/">Главная</a></li>
                         <li><a href="{{ route('login') }}">Новости</a></li>

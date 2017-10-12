@@ -43,7 +43,7 @@ class AdvertModel extends Model
 
     protected $dates = ['deleted_at'];
 
-    public $fillable = ['title', 'user_id', 'category_id', 'description', 'adverts_status_id'];
+    public $fillable = ['title', 'user_id', 'category_id', 'description', 'address', 'adverts_status_id'];
 
     public function user()
     {
@@ -58,5 +58,11 @@ class AdvertModel extends Model
     public function status()
     {
         return $this->belongsTo(AdvertsStatusModel::class, 'adverts_status_id', 'id');
+    }
+
+    public function image_latest()
+    {
+        return $this->hasOne(AdvertsImageModel::class, 'advert_id')->latest();
+//        return $this->hasOne(UsersImageModel::class, 'user_id')->latest();
     }
 }

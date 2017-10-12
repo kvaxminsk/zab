@@ -24,24 +24,21 @@
                     <table class="table table-striped table-bordered table-list">
                         <thead>
                         <tr>
+                            <th>Фото</th>
                             <th>Заголовок</th>
-                            <th>Статус</th>
-                            <th><em class="fa fa-cog"></em></th>
+                            <th>Категория</th>
+
                         </tr>
                         </thead>
                         <tbody>
                         <div class="container">
                             @foreach ($adverts as $advert)
                                 <tr>
+                                    <td>  <img style="width:150px;height:130px;"
+                                               src="{{Storage::disk('public')->url($advert->image_latest->path)}}"
+                                               alt="stack photo" class="img"></td>
                                     <td>{{$advert->title}}</td>
-                                    <td>{{$advert->status->title}}</td>
-                                    <td align="center">
-                                        <a class="btn btn-default"
-                                           href="{{route('editAdvert',['id'=>$advert->id])}}"><em
-                                                    class="fa fa-pencil"></em></a>
-                                        <a class="btn btn-danger" href="{{route('deleteAdvert',['id'=>$advert->id])}}"><em
-                                                    class="fa fa-trash"></em></a>
-                                    </td>
+                                    <td>{{$advert->category->name}}</td>
                                 </tr>
                             @endforeach
                         </div>

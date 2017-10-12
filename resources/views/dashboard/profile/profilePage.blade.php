@@ -8,7 +8,7 @@
             <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4 center-block top">
 
                 <img style="width:150px;height:150px;"
-                     src="{{Storage::disk('public')->url($user->image->path)}}"
+                     src="{{ ($user->image) ? Storage::disk('public')->url($user->image->path) : 'https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png'}}"
                 alt="stack photo" class="img">
             </div>
             <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
@@ -19,10 +19,12 @@
                 <ul class="container details">
                     {{--<li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{$user->email}}--}}
                     </p></li>
-                    <li><p style="font-size:14px"><span class="glyphicon glyphicon-map-marker one"
-                                                        style="width:50px;"></span>{{$user->country->title_ru}}
-                            , {{$user->region->title_ru}}, {{$user->city->title_ru}}
+                    @if($user->country)
+                         <li><p style="font-size:14px"><span class="glyphicon glyphicon-map-marker one"
+                                                        style="width:50px;"></span>{{ ($user->country) ? $user->country->title_ru :''}}
+                            , {{ ($user->region) ? $user->region->title_ru :''}} , {{ ($user->city) ? $user->city->title_ru :''}}
                         </p></li>
+                    @endif
                     <li><p style="font-size:14px"><span class="glyphicon glyphicon-user one"
                                                         style="width:50px;"></span>{{$user->status->title}}
                         </p>

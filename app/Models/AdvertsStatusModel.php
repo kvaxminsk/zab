@@ -9,4 +9,10 @@ class AdvertsStatusModel extends Model
     protected $table = 'adverts_statuses';
 
     public $timestamps = false;
+
+    public static function getAdvertsStatusPublish()
+    {
+        return AdvertsStatusModel::find(2)->id;
+    }
+
 }

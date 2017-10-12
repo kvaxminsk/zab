@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="container">
-    Новые объявления на сайте.
+
 </div>
 @endsection

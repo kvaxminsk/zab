@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeTitleToColumnStatus extends Migration
+class ChangeNameColumnToTableUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class ChangeTitleToColumnStatus extends Migration
      */
     public function up()
     {
-        Schema::table('adverts', function (Blueprint $table) {
-            $table->renameColumn('status', 'adverts_status_id');
+        Schema::table('users', function (Blueprint $table) {
+            $table->renameColumn('status', 'users_status_id');
         });
     }
 
@@ -25,8 +25,8 @@ class ChangeTitleToColumnStatus extends Migration
      */
     public function down()
     {
-        Schema::table('adverts', function (Blueprint $table) {
-            $table->renameColumn('adverts_status_id', 'status');
+        Schema::table('users', function (Blueprint $table) {
+            $table->renameColumn('users_status_id', 'status');
         });
     }
 }

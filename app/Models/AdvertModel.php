@@ -47,15 +47,16 @@ class AdvertModel extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User','user_id');
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
+
     public function category()
     {
-        return $this->belongsTo('App\Models\CategoryModel','category_id');
+        return $this->belongsTo('App\Models\CategoryModel', 'category_id');
     }
 
     public function status()
     {
-        return $this->belongsTo(AdvertsStatusModel::class, 'adverts_status_id','id');
+        return $this->belongsTo(AdvertsStatusModel::class, 'adverts_status_id', 'id');
     }
 }

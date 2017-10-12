@@ -23,5 +23,5 @@ class UsersImageModel extends Model
 {
     protected $table = 'users_images';
 
-    protected $fillable = ['path','user_id'];
+    protected $fillable = ['path', 'user_id'];
 }

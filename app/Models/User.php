@@ -57,7 +57,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','username','phone','city_id','country_id','region_id'
+        'name', 'email', 'password', 'username', 'phone', 'city_id', 'country_id', 'region_id'
     ];
 
     /**
@@ -72,6 +72,30 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany('App\Models\Role')->withTimestamps();
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(UsersStatusModel::class, 'users_status_id');
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(CountryModel::class, 'country_id', 'country_id');
+    }
+
+    public function region()
+    {
+        return $this->belongsTo(RegionModel::class, 'region_id', 'region_id');
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(CityModel::class, 'city_id', 'city_id');
+    }
+    public function image()
+    {
+        return $this->hasOne(UsersImageModel::class, 'user_id')->latest();
     }
 
     public static function getCurrentUser()

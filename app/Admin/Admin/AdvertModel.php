@@ -1,7 +1,7 @@
 <?php
 
-use SleepingOwl\Admin\Model\ModelConfiguration;
 use App\Models\AdvertModel;
+use SleepingOwl\Admin\Model\ModelConfiguration;
 
 AdminSection::registerModel(AdvertModel::class, function (ModelConfiguration $model) {
     $model->setTitle('Advert');
@@ -21,7 +21,7 @@ AdminSection::registerModel(AdvertModel::class, function (ModelConfiguration $mo
             ])
             ->paginate(20);
     });
-    $model->onEdit(function($id = null) {
+    $model->onEdit(function ($id = null) {
         $form = AdminForm::panel()->addHeader(
             AdminFormElement::select('adverts_status_id', 'Status')
                 ->setModelForOptions(new \App\Models\AdvertsStatusModel())

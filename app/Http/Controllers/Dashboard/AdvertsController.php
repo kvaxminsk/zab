@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\AdvertModel;
 use App\Models\AdvertsImageModel;
 use App\Models\CategoryModel;
+use App\Models\CityModel;
+use App\Models\CountryModel;
+use App\Models\RegionModel;
 use Illuminate\Support\Facades\Input;
 
 class AdvertsController extends Controller
@@ -35,28 +38,87 @@ class AdvertsController extends Controller
 
     public function editAdvert(\Request $request, $advert_id)
     {
+        $user = \Auth::user();
         $advert = AdvertModel::find($advert_id);
         $categories = CategoryModel::whereNotNull('parent_id')->pluck('name', 'id');
         $images = AdvertsImageModel::where('advert_id', $advert_id)->get();
-        return view('dashboard.adverts.editUserAdvert', ['advert' => $advert, 'categories' => $categories, 'images' => $images]);
+
+        $countries[0] = 'Выберите страну';
+        $countries += CountryModel::all(['title_ru', 'country_id'])->sortBy('title_ru')->pluck('title_ru', 'country_id')->toArray();
+        if ($user->region_id) {
+
+            $regions = RegionModel::where('country_id', $user->country_id)->get(['title_ru', 'region_id'])->sortBy('title_ru')->pluck('title_ru', 'region_id')->toArray();
+//            $regions[0] += 'Выберите регион';
+        } else {
+            $regions[0] = 'Выберите регион';
+        }
+
+        if ($user->city_id) {
+
+            $cities = CityModel::where('region_id', $user->region_id)->get(['title_ru', 'city_id'])->sortBy('title_ru')->pluck('title_ru', 'city_id')->toArray();
+//            $cities[0] += 'Выберите город';
+        } else {
+            $cities[0] = 'Выберите регион';
+        }
+
+        return view('dashboard.adverts.editUserAdvert', [
+                'advert' => $advert,
+                'categories' => $categories,
+                'images' => $images,
+                'countries' => $countries,
+                'regions' => $regions,
+                'cities' => $cities,
+                'user' => $user,
+            ]
+        );
     }
 
     public function addAdvert(\Request $request)
     {
+        $user = \Auth::user();
         $categories = CategoryModel::whereNotNull('parent_id')->pluck('name', 'id');
-        return view('dashboard.adverts.addUserAdvert', ['categories' => $categories]);
+        $countries[0] = 'Выберите страну';
+        $countries += CountryModel::all(['title_ru', 'country_id'])->sortBy('title_ru')->pluck('title_ru', 'country_id')->toArray();
+//        var_dump($regions);
+        if ($user->region_id) {
+
+            $regions = RegionModel::where('country_id', $user->country_id)->get(['title_ru', 'region_id'])->sortBy('title_ru')->pluck('title_ru', 'region_id')->toArray();
+//            $regions[0] += 'Выберите регион';
+        } else {
+            $regions[0] = 'Выберите регион';
+        }
+
+        if ($user->city_id) {
+
+            $cities = CityModel::where('region_id', $user->region_id)->get(['title_ru', 'city_id'])->sortBy('title_ru')->pluck('title_ru', 'city_id')->toArray();
+//            $cities[0] += 'Выберите город';
+        } else {
+            $cities[0] = 'Выберите регион';
+        }
+        return view('dashboard.adverts.addUserAdvert',
+            [
+                'categories' => $categories,
+                'countries' => $countries,
+                'regions' => $regions,
+                'cities' => $cities,
+                'user' => $user,
+            ]
+        );
     }
 
     public function postAddAdvert(\Request $request)
     {
-        $categories = CategoryModel::whereNotNull('parent_id')->pluck('name', 'id');
 
         $rules = array(
             'title' => 'required:min:4',
             'description' => 'required|min:10',
             'images' => 'required',
+            'country_id' => 'required:integer',
+            'region_id' => 'required:integer',
+            'city_id' => 'required:integer',
         );
         $input = Input::all();
+        $input['user_id'] = \Auth::user()->id;
         $validator = \Validator::make(
 //            Input::all(),
             $input,
@@ -67,12 +129,7 @@ class AdvertsController extends Controller
             $user = \Auth::user();
 
             $advert = AdvertModel::create(
-                [
-                    'title' => $input['title'],
-                    'description' => $input['description'],
-                    'category_id' => $input['category_id'],
-                    'user_id' => $user->id,
-                ]
+                $input
             );
             $files = $request::file('images');
             foreach ($files as $file) {
@@ -86,8 +143,7 @@ class AdvertsController extends Controller
                     'user_id' => $user->id,
                 ]);
             }
-        }
-        else {
+        } else {
             return redirect(route('addAdvert'));
         }
         return redirect(route('editAdvert', ['advert_id' => $advert->id]));
@@ -108,7 +164,7 @@ class AdvertsController extends Controller
             $rules
         );
 //        var_dump($validator->messages());die();
-        $advert = AdvertModel::find( $advert_id);
+        $advert = AdvertModel::find($advert_id);
         if ($validator->passes()) {
             $user = \Auth::user();
 
@@ -128,8 +184,7 @@ class AdvertsController extends Controller
                     ]);
                 }
             }
-        }
-        else {
+        } else {
             return redirect(route('editAdvert', ['advert_id' => $advert->id]));
         }
         return redirect(route('editAdvert', ['advert_id' => $advert->id]));

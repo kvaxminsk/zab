@@ -50,14 +50,16 @@
     ],
     "post-install-cmd": [
       "Illuminate\\Foundation\\ComposerScripts::postInstall",
-      "php artisan optimize"
+      "php artisan optimize",
+      "xcopy vendor\\twbs\\bootstrap\\dist\\*.* public\\ /E /Y"
     ],
     "post-update-cmd": [
       "Illuminate\\Foundation\\ComposerScripts::postUpdate",
       "php artisan ide-helper:generate",
       "php artisan ide-helper:meta",
       "php artisan sleepingowl:update",
-      "php artisan optimize"
+      "php artisan optimize",
+      "xcopy vendor\\twbs\\bootstrap\\dist\\*.* public\\ /E /Y"
     ]
   },
   "config": {

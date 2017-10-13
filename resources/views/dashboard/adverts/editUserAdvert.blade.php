@@ -16,7 +16,8 @@
                             <h3 class="panel-title"></h3>
                         </div>
                         <div class="col col-xs-6 text-right">
-                            <a href="{{route('addAdvert')}}" type="button" class="btn btn-sm btn-primary btn-create">Добавить Объявление</a>
+                            <a href="{{route('addAdvert')}}" type="button" class="btn btn-sm btn-primary btn-create">Добавить
+                                Объявление</a>
                         </div>
                     </div>
                 </div>
@@ -46,11 +47,37 @@
 
                     </div>
                     <div class="form-group">
+                        <label class="col-lg-3 control-label">Страна</label>
+                        <div class="col-lg-8">
+                            {!!Form::select('country_id', $countries, $advert->country_id,array('class' => 'form-control','id'=>'country_id',))!!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Область</label>
+                        <div class="col-lg-8">
+                            {!!Form::select('region_id', $regions, $advert->region_id,array('class' => 'form-control','id'=>'region_id'))!!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Город</label>
+                        <div class="col-lg-8">
+                            {!!Form::select('city_id', $cities,$advert->city_id,array('class' => 'form-control','id'=>'city_id'))!!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Адрес:</label>
+                        <div class="col-lg-8">
+                            <div class="ui-select">
+                                {!!Form::text('address', $advert->address,array('class' => 'form-control'))!!}
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-md-3 control-label">Загрузить фотографии</label>
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="text-center">
                                 {{Form::file('images[]',['class'=>'text-center center-block well well-sm','multiple'=>"multiple"])}}
-
                             </div>
                         </div>
                     </div>
@@ -74,9 +101,11 @@
                         <div class="container">
                             @foreach ($images as $image)
                                 <tr>
-                                    <td><img src="{{Storage::disk('public')->url($image->path)}}" width="100" height="100"></td>
+                                    <td><img src="{{Storage::disk('public')->url($image->path)}}" width="100"
+                                             height="100"></td>
                                     <td align="center">
-                                        <a class="btn btn-danger" href="{{route('deleteAdvertImage',['image_id'=>$image->id])}}"><em
+                                        <a class="btn btn-danger"
+                                           href="{{route('deleteAdvertImage',['image_id'=>$image->id])}}"><em
                                                     class="fa fa-trash"></em></a>
                                     </td>
                                 </tr>
@@ -85,7 +114,6 @@
 
                         </tbody>
                     </table>
-
 
 
                     {{ Form::close() }}

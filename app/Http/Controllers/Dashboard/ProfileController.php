@@ -37,26 +37,7 @@ class ProfileController extends Controller
 
     }
 
-    public function regions(\Request $request)
-    {
-//        die('fff');
-        $request::get('country_id');
-        $regions = RegionModel::where('country_id', $request::get('country_id'))->get(['title_ru', 'region_id'])->sortBy('title_ru')->toArray();
-//        var_dump(json_encode($regions));
-//        die();
-        return response()->json([
-            'type' => 'success', 'regions' => $regions
-        ]);
-    }
 
-    public function cities(\Request $request)
-    {
-        $request::get('country_id');
-        $cities = CityModel::where('region_id', $request::get('region_id'))->get(['title_ru', 'city_id'])->sortBy('title_ru')->toArray();
-        return response()->json([
-            'type' => 'success', 'cities' => $cities
-        ]);
-    }
 
     public function editProfilePage(\Request $request)
     {
@@ -68,7 +49,7 @@ class ProfileController extends Controller
             $usersImagePath = null;
         }
 
-        $countries = CountryModel::all(['title_ru', 'country_id'])->sortBy('title_ru')->pluck('title_ru', 'country_id');
+        $countries = CountryModel::all(['title_ru', 'country_id'])->sortBy('title_ru')->pluck('title_ru', 'country_id')->toArray();
         if ($user->country_id) {
             $regions[0] = 'Выберите регион';
             $regions += RegionModel::where('country_id', $user->country_id)->get(['title_ru', 'region_id'])->sortBy('title_ru')->pluck('title_ru', 'region_id')->toArray();
@@ -82,7 +63,7 @@ class ProfileController extends Controller
             $cities[0] = 'Выберите город';
             $cities += CityModel::where('region_id', $user->region_id)->get(['title_ru', 'city_id'])->sortBy('title_ru')->pluck('title_ru', 'city_id')->toArray();
         } else {
-            $cities = ['0' => 'Выберите город'];
+            $cities[0] = 'Выберите город';
         }
 
 //        var_dump($cities);

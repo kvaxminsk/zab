@@ -43,7 +43,7 @@ class AdvertModel extends Model
 
     protected $dates = ['deleted_at'];
 
-    public $fillable = ['title', 'user_id', 'category_id', 'description', 'address', 'adverts_status_id'];
+    public $fillable = ['title', 'user_id', 'category_id', 'description', 'address', 'country_id', 'region_id', 'city_id', 'adverts_status_id'];
 
     public function user()
     {

@@ -25,8 +25,8 @@ Auth::routes();
 //
 //Auth::routes();
 
-Route::get('/dashboard', 'Dashboard\DashboardController@index')->name('dashboard');
-
+Route::get('/regions', 'CountryController@regions')->name('regions');
+Route::get('/cities', 'CountryController@cities')->name('cities');
 
 Route::get('/social_login/{provider}', 'SocialController@login');
 Route::get('/logout', 'SocialController@logout');
@@ -35,8 +35,7 @@ Route::group( ['prefix' => 'dashboard'], function () {
     Route::get('/', 'Dashboard\DashboardController@index')->name('dashboard');
 
     Route::group(['middleware' => ['auth'], 'prefix' => 'profile'], function () {
-        Route::get('/regions', 'Dashboard\ProfileController@regions')->name('regions');
-        Route::get('/cities', 'Dashboard\ProfileController@cities')->name('cities');
+
 //        Route::any('/', 'Dashboard\ProfileController@showProfilePage')->name('userProfilePage');
         Route::get('/edit', 'Dashboard\ProfileController@editProfilePage')->name('editUserProfilePage');
         Route::post('/edit', 'Dashboard\ProfileController@postEditProfile')->name('postUserEditProfile');

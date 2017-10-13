@@ -38,6 +38,33 @@
 
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Описание:</label>
+                        <div class="col-lg-8">
+                            {{Form::textarea('description',null,array('class' => 'form-control'))}}
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Страна</label>
+                        <div class="col-lg-8">
+                            {!!Form::select('country_id', $countries,$user->country_id,array('class' => 'form-control','id'=>'country_id',))!!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Область</label>
+                        <div class="col-lg-8">
+                            {!!Form::select('region_id', $regions, $user->region_id,array('class' => 'form-control','id'=>'region_id'))!!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Город</label>
+                        <div class="col-lg-8">
+                            {!!Form::select('city_id', $cities,$user->city_id,array('class' => 'form-control','id'=>'city_id'))!!}
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Адрес:</label>
                         <div class="col-lg-8">
@@ -48,19 +75,14 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-3 control-label">Описание:</label>
-                        <div class="col-lg-8">
-                            {{Form::textarea('description',null,array('class' => 'form-control'))}}
-                        </div>
-
-                    </div>
-                    <div class="form-group">
                         <label class="col-md-3 control-label">Загрузить фотографии</label>
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="text-center">
                                 {{--{{Form::file('images',['class'])}}--}}
-                                <input type="file" class="text-center center-block well well-sm" name="images[]"
-                                       multiple>
+                                {{--<input type="file" class="text-center center-block well well-sm" name="images[]"--}}
+                                       {{--multiple>--}}
+                                {{Form::file('images[]',['class'=>'text-center center-block well well-sm','multiple'=>"multiple"])}}
+
                             </div>
                         </div>
                     </div>

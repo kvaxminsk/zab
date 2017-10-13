@@ -34,4 +34,10 @@ AdminSection::registerModel(AdvertModel::class, function (ModelConfiguration $mo
         );
         return $form;
     });
+    $model->deleted(function($callback,  $cur_model) {
+//        $cur_model->name= '111';
+//        $cur_model->save();
+        $cur_model->adverts_status_id = \App\Models\AdvertsStatusModel::getAdvertsStatusDeleted();
+        $cur_model->save();
+    });
 });

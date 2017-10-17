@@ -4,10 +4,10 @@
 
         <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar" style="margin-top:20px">
             <div class="list-group">
-                <a href="{{route('category')}}" class="list-group-item ">Все категории</a>
+                <a href="{{route('category',['category_id' => 0])}}" class="list-group-item {{($category_id) ? '' : 'active' }}">Все категории</a>
                 @foreach($categories as $category)
                     <a href="{{route('category',['category_id'=> $category->id])}}"
-                       class="list-group-item">{{$category->name}}</a>
+                       class="list-group-item {{ ($category_id == $category->id) ? 'active' : '' }}">{{$category->name}}</a>
                 @endforeach
 
             </div>
@@ -25,7 +25,7 @@
 
                         </figcaption>
                         <i class="ion-information"></i>
-                        <a href="#"></a>
+                        <a href="{{route('showAdvert', ['advert_id'=>$advert->id])}}"></a>
                     </figure>
                 </div>
             @endforeach

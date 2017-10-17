@@ -22,8 +22,9 @@ Auth::routes();
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('homePage');
-Route::get('/category', 'Main\AdvertsController@category')->name('category');
-//
+Route::get('/category/{category_id}', 'Main\AdvertsController@category')->name('category');
+Route::get('/advert/{advert_id}', 'Main\AdvertsController@showAdvert')->name('showAdvert');
+//Route::get('/edit/{advert_id}', 'Dashboard\AdvertsController@editAdvert')->name('editAdvert2');
 //Auth::routes();
 
 Route::get('/regions', 'CountryController@regions')->name('regions');

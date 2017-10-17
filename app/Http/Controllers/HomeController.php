@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\AdvertModel;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     /**
@@ -24,10 +24,17 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-
+        $advertsFirst = AdvertModel::take(3)->get();
+        $advertsSecond = AdvertModel::skip(3)->take(3)->get();
+        $advertsThird = AdvertModel::skip(6)->take(3)->get();
 //        var_dump(User::getCurrentUser()->isRoleAdmin());die();
-        $request->user()->authorizeRoles(['user', 'manager', 'admin']);
-        $user = User::getCurrentUser();
-        return view('home', []);
+//        $request->user()->authorizeRoles(['user', 'manager', 'admin']);
+//        $user = User::getCurrentUser();
+//        var_dump('ddd');
+        return view('welcome', [
+            'adverts_first' => $advertsFirst,
+            'adverts_second' => $advertsSecond,
+            'adverts_third' => $advertsThird,
+        ]);
     }
 }

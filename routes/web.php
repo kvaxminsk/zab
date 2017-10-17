@@ -21,7 +21,8 @@ Auth::routes();
 
 Auth::routes();
 
-//Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('/', 'HomeController@index')->name('homePage');
+Route::get('/category', 'Main\AdvertsController@category')->name('category');
 //
 //Auth::routes();
 

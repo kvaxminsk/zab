@@ -106,6 +106,4 @@
 
         </div>
     </div>
-
-
-    @endsection
+@endsection

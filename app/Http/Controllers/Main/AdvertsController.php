@@ -33,14 +33,14 @@ class AdvertsController extends Controller
 
     public function showAdvert(Request $request,$advert_id)
     {
-        $categoryId = $request->get('category_id');
-        if($categoryId) {
-            $adverts = AdvertModel::where('category_id', $categoryId)->paginate(10);
+
+        if($advert_id) {
+            $advert = AdvertModel::where('id', $advert_id)->first();
         }else {
 
-            $adverts = AdvertModel::paginate(10);
+           return \Redirect::back();
         }
-
+//        var_dump($advert->images);die();
         $categories = CategoryModel::whereNotNull('parent_id')->get();
 //        var_dump($categories);die();
 //        var_dump(User::getCurrentUser()->isRoleAdmin());die();
@@ -48,9 +48,7 @@ class AdvertsController extends Controller
 //        $user = User::getCurrentUser();
 //        var_dump('ddd');
         return view('advert', [
-            'adverts' => $adverts,
-            'categories' => $categories,
-            'category_id' => $categoryId,
+            'advert' => $advert,
         ]);
     }
 }

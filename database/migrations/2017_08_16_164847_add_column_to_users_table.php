@@ -17,9 +17,7 @@ class AddColumnToUsersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('country_id')->nullable();
             $table->string('city_id')->nullable();
-            $table->string('status')->default(1);
-            $table->softDeletes();
-
+            $table->string('status')->default(2);
         });
     }
 

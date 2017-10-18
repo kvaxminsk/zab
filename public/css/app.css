@@ -7059,7 +7059,7 @@ li {
 *********************************************/
 
 .product{
-    border: 1px solid #dddddd;
+    /*border: 1px solid #dddddd;*/
     height: 321px;
 }
 
@@ -7166,9 +7166,9 @@ li {
     opacity: 1;
 }
 
-.service-image-left {
-    padding-right: 50px;
-}
+/*.service-image-left {*/
+    /*padding-right: 50px;*/
+/*}*/
 
 .service-image-right {
     padding-left: 50px;

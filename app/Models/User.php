@@ -165,4 +165,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(AdvertModel::class, 'user_id');
     }
+    public function social_vk()
+    {
+        return $this->hasOne(UserSocialAccountModel::class)->where('provider', 'vkontakte');
+    }
 }

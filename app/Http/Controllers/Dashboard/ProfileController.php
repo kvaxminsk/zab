@@ -17,6 +17,8 @@ class ProfileController extends Controller
     {
         if ($id) {
             $user = User::find($id);
+//            var_dump($user->social_vk);
+//            die();
             if ($user) {
                 return view('dashboard.profile.profilePage', [
                     'user' => $user,

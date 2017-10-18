@@ -21,7 +21,7 @@ class CreateTableAdvert extends Migration
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
             $table->text('description')->nuallble();
-            $table->integer('status')->unsigned()->default(0);
+            $table->integer('status')->unsigned()->default(1);
             $table->timestamps();
         });
     }

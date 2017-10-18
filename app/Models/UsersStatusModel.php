@@ -8,5 +8,5 @@ class UsersStatusModel extends Model
 {
     protected $table = "users_statuses";
 
-    public $timestamps = "false";
+    public $timestamps = false;
 }

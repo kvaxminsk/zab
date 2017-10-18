@@ -9,7 +9,7 @@
 
                 <img style="width:150px;height:150px;"
                      src="{{ ($user->image) ? Storage::disk('public')->url($user->image->path) : 'https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png'}}"
-                alt="stack photo" class="img">
+                     alt="stack photo" class="img">
             </div>
             <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                 <div class="container" style="border-bottom:1px solid black">
@@ -20,10 +20,19 @@
                     {{--<li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{$user->email}}--}}
                     </p></li>
                     @if($user->country)
-                         <li><p style="font-size:14px"><span class="glyphicon glyphicon-map-marker one"
-                                                        style="width:50px;"></span>{{ ($user->country) ? $user->country->title_ru :''}}
-                            , {{ ($user->region) ? $user->region->title_ru :''}} , {{ ($user->city) ? $user->city->title_ru :''}}
+                        <li><p style="font-size:14px"><span class="glyphicon glyphicon-map-marker one"
+                                                            style="width:50px;"></span>{{ ($user->country) ? $user->country->title_ru :''}}
+                                , {{ ($user->region) ? $user->region->title_ru :''}}
+                                , {{ ($user->city) ? $user->city->title_ru :''}}
+                            </p></li>
+                    @endif
+                    <li><p style="font-size:14px"><span class="glyphicon glyphicon-user one"
+                                                        style="width:50px;"></span>{{$user->email}}
                         </p></li>
+                    @if($user->social_vk)
+                        <li><p style="font-size:14px"><a href="https://vk.com/id{{$user->social_vk->provider_user_id}}">VK</a>
+                            </p>
+                        </li>
                     @endif
                     <li><p style="font-size:14px"><span class="glyphicon glyphicon-user one"
                                                         style="width:50px;"></span>{{$user->status->title}}

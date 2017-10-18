@@ -25,7 +25,7 @@ class AdvertsController extends Controller
         $advertModel = AdvertModel::where('id', $advert_id)->first();
         AdvertModel::destroy($advert_id);
 
-        $advertModel->status = 4;
+        $advertModel->status = 5;
         $advertModel->save();
         return \Redirect::back();
     }

@@ -8,7 +8,7 @@
   "license": "MIT",
   "type": "project",
   "require": {
-    "php": ">=5.6.4",
+    "php": ">=7",
     "barryvdh/laravel-debugbar": "*",
     "barryvdh/laravel-ide-helper": "dev-master",
     "intervention/image": "^2.4",
@@ -22,8 +22,7 @@
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
-    "mockery/mockery": "0.9.*",
-    "phpunit/phpunit": "~5.7"
+    "mockery/mockery": "0.9.*"
   },
   "autoload": {
     "classmap": [
@@ -58,8 +57,7 @@
       "php artisan ide-helper:generate",
       "php artisan ide-helper:meta",
       "php artisan sleepingowl:update",
-      "php artisan optimize",
-      "xcopy vendor\\twbs\\bootstrap\\dist\\*.* public\\ /E /Y"
+      "php artisan optimize"
     ]
   },
   "config": {

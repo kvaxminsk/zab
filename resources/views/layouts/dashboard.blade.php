@@ -15,7 +15,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet'
+          type='text/css'>
     <script src="/js/script.js"></script>
 </head>
 <body>

@@ -112,20 +112,20 @@ class AdvertsController extends Controller
         $rules = array(
             'title' => 'required:min:4',
             'description' => 'required|min:10',
-            'images' => 'required',
+//            'images' => 'required',
             'country_id' => 'required:integer',
             'region_id' => 'required:integer',
             'city_id' => 'required:integer',
         );
         $input = Input::all();
         $input['user_id'] = \Auth::user()->id;
-        $validator = \Validator::make(
+        $validation = \Validator::make(
 //            Input::all(),
             $input,
             $rules
         );
 
-        if ($validator->passes()) {
+        if ($validation->passes()) {
             $user = \Auth::user();
 
             $advert = AdvertModel::create(
@@ -144,9 +144,9 @@ class AdvertsController extends Controller
                 ]);
             }
         } else {
-            return redirect(route('addAdvert'));
+            return redirect(route('addAdvert'))->withErrors($validation);
         }
-        return redirect(route('editAdvert', ['advert_id' => $advert->id]));
+        return redirect(route('editAdvert', ['advert_id' => $advert->id]))->withSucess('Данные успешно сохранены');
     }
 
     public function postEditAdvert(\Request $request)
@@ -154,18 +154,21 @@ class AdvertsController extends Controller
         $rules = array(
             'title' => 'required:min:4:max:50',
             'description' => 'required|min:10',
-            'address' => 'string',
+            'address' => 'required',
+            'country_id' => 'required:integer',
+            'region_id' => 'required:integer',
+            'city_id' => 'required:integer',
         );
         $advert_id = (int)$request::get('advert_id');
         $input = Input::all();
-        $validator = \Validator::make(
+        $validation = \Validator::make(
 //            Input::all(),
             $input,
             $rules
         );
 //        var_dump($validator->messages());die();
         $advert = AdvertModel::find($advert_id);
-        if ($validator->passes()) {
+        if ($validation->passes()) {
             $user = \Auth::user();
 
             $advert->update($input);
@@ -185,8 +188,8 @@ class AdvertsController extends Controller
                 }
             }
         } else {
-            return redirect(route('editAdvert', ['advert_id' => $advert->id]));
+            return redirect(route('editAdvert', ['advert_id' => $advert->id]))->withErrors($validation);
         }
-        return redirect(route('editAdvert', ['advert_id' => $advert->id]));
+        return redirect(route('editAdvert', ['advert_id' => $advert->id]))->withSuccess('Данные успешно сохранены');
     }
 }

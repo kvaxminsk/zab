@@ -3,9 +3,12 @@
 @section('seo_title')Profile @endsection
 
 @section('content')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet'
-          type='text/css'>
 
+    <div class="row">
+        <div class="col-lg-12">
+            @include('dashboard.errmsg')
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-12">
 
@@ -24,60 +27,84 @@
                 <div class="panel-body">
                     {{ Form::open(array('route' => array('postEditAdvert','advert_id'=>$advert->id),'method' => 'post','class'=>'form-horizontal','files' => true)) }}
                     {{Form::hidden('advert_id', $advert->id)}}
-                    <div class="form-group">
+                    <div class="form-group {{ $errors->has('title') ? ' has-error' : '' }}">
                         <label class="col-lg-3 control-label">Название:</label>
                         <div class="col-lg-8">
                             {{Form::text('title',$advert->title,array('class' => 'form-control'))}}
+                            @if ($errors->has('title'))
+                                <span class="error"><strong>{{ $errors->first('title') }}</strong></span>
+                            @endif
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group {{ $errors->has('category_id') ? ' has-error' : '' }}">
                         <label class="col-lg-3 control-label">Категория:</label>
                         <div class="col-lg-8">
                             <div class="ui-select">
                                 {!!Form::select('category_id', $categories,null,array('class' => 'form-control'))!!}
+                                @if ($errors->has('category_id'))
+                                    <span class="error"><strong>{{ $errors->first('category_id') }}</strong></span>
+                                @endif
                             </div>
 
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
                         <label class="col-lg-3 control-label">Описание:</label>
                         <div class="col-lg-8">
                             {{Form::textarea('description',$advert->description,array('class' => 'form-control'))}}
+                            @if ($errors->has('description'))
+                                <span class="error"><strong>{{ $errors->first('description') }}</strong></span>
+                            @endif
                         </div>
 
                     </div>
-                    <div class="form-group">
+                    <div class="form-group {{ $errors->has('country_id') ? ' has-error' : '' }}">
                         <label class="col-lg-3 control-label">Страна</label>
                         <div class="col-lg-8">
                             {!!Form::select('country_id', $countries, $advert->country_id,array('class' => 'form-control','id'=>'country_id',))!!}
+                            @if ($errors->has('country_id'))
+                                <span class="error"><strong>{{ $errors->first('country_id') }}</strong></span>
+                            @endif
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group {{ $errors->has('region_id') ? ' has-error' : '' }}">
                         <label class="col-lg-3 control-label">Область</label>
                         <div class="col-lg-8">
                             {!!Form::select('region_id', $regions, $advert->region_id,array('class' => 'form-control','id'=>'region_id'))!!}
+                            @if ($errors->has('region_id'))
+                                <span class="error"><strong>{{ $errors->first('region_id') }}</strong></span>
+                            @endif
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group {{ $errors->has('city_id') ? ' has-error' : '' }}">
                         <label class="col-lg-3 control-label">Город</label>
                         <div class="col-lg-8">
                             {!!Form::select('city_id', $cities,$advert->city_id,array('class' => 'form-control','id'=>'city_id'))!!}
+                            @if ($errors->has('city_id'))
+                                <span class="error"><strong>{{ $errors->first('city_id') }}</strong></span>
+                            @endif
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group {{ $errors->has('address') ? ' has-error' : '' }}">
                         <label class="col-lg-3 control-label">Адрес:</label>
                         <div class="col-lg-8">
                             <div class="ui-select">
                                 {!!Form::text('address', $advert->address,array('class' => 'form-control'))!!}
+                                @if ($errors->has('address'))
+                                    <span class="error"><strong>{{ $errors->first('address') }}</strong></span>
+                                @endif
                             </div>
 
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group {{ $errors->has('images[]') ? ' has-error' : '' }}">
                         <label class="col-md-3 control-label">Загрузить фотографии</label>
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="text-center">
                                 {{Form::file('images[]',['class'=>'text-center center-block well well-sm','multiple'=>"multiple"])}}
+                                @if ($errors->has('images[]'))
+                                    <span class="error"><strong>{{ $errors->first('images[]') }}</strong></span>
+                                @endif
                             </div>
                         </div>
                     </div>

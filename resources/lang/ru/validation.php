@@ -121,6 +121,11 @@ return [
         'email' => 'Email',
         'phone' => 'Телефон',
         'name' => 'Имя',
+        'description' => "Описание",
+        'category_id' => "Категория",
+        'address' => "Адрес",
+        'title' => "Название",
+        'images ' => "Изображения",
     ],
 
 ];

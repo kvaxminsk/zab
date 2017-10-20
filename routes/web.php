@@ -39,7 +39,7 @@ Route::group( ['prefix' => 'dashboard'], function () {
     Route::group(['middleware' => ['auth'], 'prefix' => 'profile'], function () {
 
 //        Route::any('/', 'Dashboard\ProfileController@showProfilePage')->name('userProfilePage');
-        Route::get('/edit', 'Dashboard\ProfileController@editProfilePage')->name('editUserProfilePage');
+        Route::any('/edit', 'Dashboard\ProfileController@editProfilePage')->name('editUserProfilePage');
         Route::post('/edit', 'Dashboard\ProfileController@postEditProfile')->name('postUserEditProfile');
         Route::post('/save', 'Dashboard\ProfileController@saveProfile')->name('saveUsersProfileProcess');
         Route::get('/{id}', 'Dashboard\ProfileController@showProfilePage')->name('userProfilePage');

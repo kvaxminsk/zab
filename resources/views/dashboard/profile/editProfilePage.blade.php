@@ -6,6 +6,11 @@
     {{ Form::open(array('route' => array('postUserEditProfile'),'method' => 'post','class'=>'form-horizontal','files' => true)) }}
     <div class="jumbotron">
         <div class="row">
+            <div class="col-lg-12">
+                @include('dashboard.errmsg')
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4 center-block top">
             </div>
             <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4 center-block top">
@@ -18,44 +23,63 @@
             </div>
 
         </div>
+
         <div class="row">
             <div class="panel-body">
 
                 {{Form::hidden('advert_id', $user->id)}}
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
                     <label class="col-lg-3 control-label">Имя:</label>
                     <div class="col-lg-8">
                         {{Form::text('name',$user->name,array('class' => 'form-control'))}}
+                        @if ($errors->has('name'))
+                            <span class="error"><strong>{{ $errors->first('name') }}</strong></span>
+                        @endif
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('username') ? ' has-error' : '' }}">
                     <label class="col-lg-3 control-label">Логин(будет отображаться везде):</label>
                     <div class="col-lg-8">
                         {{Form::text('username',$user->username,array('class' => 'form-control'))}}
+                        @if ($errors->has('username'))
+                            <span class="error"><strong>{{ $errors->first('username') }}</strong></span>
+                        @endif
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('phone') ? ' has-error' : '' }}">
                     <label class="col-lg-3 control-label">Телефон</label>
                     <div class="col-lg-8">
-                        {{Form::text('phone',$user->phone,array('class' => 'form-control'))}}
+                        {{Form::text('phone',$user->phone,array('class' => 'form-control has-error' ))}}
+                        @if ($errors->has('phone'))
+                            <span class="error"><strong>{{ $errors->first('phone') }}</strong></span>
+                        @endif
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('country_id') ? ' has-error' : '' }}">
                     <label class="col-lg-3 control-label">Страна</label>
                     <div class="col-lg-8">
                         {!!Form::select('country_id', $countries,$user->country_id,array('class' => 'form-control','id'=>'country_id',))!!}
+                        @if ($errors->has('country_id'))
+                            <span class="error"><strong>{{ $errors->first('country_id') }}</strong></span>
+                        @endif
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('region_id') ? ' has-error' : '' }}">
                     <label class="col-lg-3 control-label">Область</label>
                     <div class="col-lg-8">
                         {!!Form::select('region_id', $regions,$user->region_id,array('class' => 'form-control','id'=>'region_id'))!!}
+                        @if ($errors->has('region_id'))
+                            <span class="error"><strong>{{ $errors->first('region_id') }}</strong></span>
+                        @endif
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('city_id') ? ' has-error' : '' }}">
                     <label class="col-lg-3 control-label">Город</label>
                     <div class="col-lg-8">
                         {!!Form::select('city_id', $cities,$user->city_id,array('class' => 'form-control','id'=>'city_id'))!!}
+                        @if ($errors->has('city_id'))
+                            <span class="error"><strong>{{ $errors->first('city_id') }}</strong></span>
+                        @endif
                     </div>
                 </div>
                 <div class="form-group">

@@ -40,7 +40,6 @@ class ProfileController extends Controller
     }
 
 
-
     public function editProfilePage(\Request $request)
     {
 //        $request->user()->authorizeRoles(['user', 'manager', 'admin']);
@@ -50,13 +49,13 @@ class ProfileController extends Controller
         } catch (\ErrorException $e) {
             $usersImagePath = null;
         }
+        $countries[0] = 'Выберите страну';
+        $countries += CountryModel::all(['title_ru', 'country_id'])->sortBy('title_ru')->pluck('title_ru', 'country_id')->toArray();
 
-        $countries = CountryModel::all(['title_ru', 'country_id'])->sortBy('title_ru')->pluck('title_ru', 'country_id')->toArray();
+
         if ($user->country_id) {
             $regions[0] = 'Выберите регион';
             $regions += RegionModel::where('country_id', $user->country_id)->get(['title_ru', 'region_id'])->sortBy('title_ru')->pluck('title_ru', 'region_id')->toArray();
-//            array_unshift($regions, 'Выберите регион');
-//            asort($regions);
         } else {
             $regions = ['0' => 'Выберите регион'];
         }
@@ -68,9 +67,6 @@ class ProfileController extends Controller
             $cities[0] = 'Выберите город';
         }
 
-//        var_dump($cities);
-//        die('fdsaf');
-//        return redirect('showProfilePages');
         return view('dashboard.profile.editProfilePage', [
             'user' => $user,
             'image_path' => $usersImagePath,
@@ -85,14 +81,20 @@ class ProfileController extends Controller
         $user = \Auth::user();
 
         $rules = array(
-            'name' => 'required:min:6:max50',
-            'username' => 'required:min:6:max50',
+            'name' => 'required|min:6|max:50',
+            'username' => 'required|min:6|max:50',
             'phone' => 'integer',
             'country_id' => 'integer',
             'region_id' => 'integer',
             'city_id' => 'integer'
         );
-
+//        $messages = [
+//            'required' => 'Обязательно для заполнения :attribute.',
+//            'min' => 'Минимальное количество символов :min',
+//            'max' => 'Минимальное количество символов :max',
+//            'integer' => 'Разрешены только цифры :attribute',
+//
+//            ];
         $validation = \Validator::make(Input::all(), $rules);
         if ($validation->passes()) {
 
@@ -130,11 +132,11 @@ class ProfileController extends Controller
                 }
             }
 
-            return redirect(route('editUserProfilePage'));
+            return redirect(route('editUserProfilePage'))->withSuccess('Данные успешно сохранены');
         } else {
-            var_dump($validation->messages());
 //            die();
-            return redirect(route('editUserProfilePage'))->withErrors('проверьте данные');
+//            var_dump($validation)
+            return redirect(route('editUserProfilePage'))->withErrors($validation);
         }
 //        return $request;
     }

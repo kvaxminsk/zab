@@ -52,7 +52,7 @@ Route::group( ['prefix' => 'dashboard'], function () {
         Route::get('/delete/{advert_id}', 'Dashboard\AdvertsController@deleteAdvert')->name('deleteAdvert');
         Route::get('/delete_image/{image_id}', 'Dashboard\AdvertsController@deleteAdvertImage')->name('deleteAdvertImage');
         Route::get('/edit/{advert_id}', 'Dashboard\AdvertsController@editAdvert')->name('editAdvert');
-        Route::post('/edit', 'Dashboard\AdvertsController@postEditAdvert')->name('postEditAdvert');
+        Route::post('/edit/{advert_id}', 'Dashboard\AdvertsController@postEditAdvert')->name('postEditAdvert');
         Route::get('/add', 'Dashboard\AdvertsController@addAdvert')->name('addAdvert');
         Route::post('/add', 'Dashboard\AdvertsController@postAddAdvert')->name('postAddAdvert');
 //        Route::get('/edit/{id}', '')->name('advertEditPage');

@@ -26,6 +26,7 @@
                         <tr>
                             <th>Заголовок</th>
                             <th>Статус</th>
+                            <th>Состояние объявления</th>
                             <th><em class="fa fa-cog"></em></th>
                         </tr>
                         </thead>
@@ -35,6 +36,7 @@
                                 <tr>
                                     <td>{{$advert->title}}</td>
                                     <td>{{$advert->status->title}}</td>
+                                    <td>{{$advert->action_status->title}}</td>
                                     <td align="center">
                                         <a class="btn btn-default"
                                            href="{{route('editAdvert',['id'=>$advert->id])}}"><em

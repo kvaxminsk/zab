@@ -40,9 +40,21 @@
                         <label class="col-lg-3 control-label">Категория:</label>
                         <div class="col-lg-8">
                             <div class="ui-select">
-                                {!!Form::select('category_id', $categories,null,array('class' => 'form-control'))!!}
+                                {!!Form::select('category_id', $categories,$advert->category_id,array('class' => 'form-control'))!!}
                                 @if ($errors->has('category_id'))
                                     <span class="error"><strong>{{ $errors->first('category_id') }}</strong></span>
+                                @endif
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group {{ $errors->has('adverts_active_status_id') ? ' has-error' : '' }}">
+                        <label class="col-lg-3 control-label">Статус:</label>
+                        <div class="col-lg-8">
+                            <div class="ui-select">
+                                {!!Form::select('adverts_active_status_id', $adverts_active_statuses,$advert->adverts_active_status_id,array('class' => 'form-control'))!!}
+                                @if ($errors->has('adverts_active_status_id'))
+                                    <span class="error"><strong>{{ $errors->first('adverts_active_status_id') }}</strong></span>
                                 @endif
                             </div>
 

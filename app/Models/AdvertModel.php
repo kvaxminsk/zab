@@ -43,7 +43,7 @@ class AdvertModel extends Model
 
     protected $dates = ['deleted_at'];
 
-    public $fillable = ['title', 'user_id', 'category_id', 'description', 'address', 'country_id', 'region_id', 'city_id', 'adverts_status_id'];
+    public $fillable = ['title', 'user_id', 'category_id', 'description', 'address', 'country_id', 'region_id', 'city_id', 'adverts_status_id','adverts_active_status_id'];
 
     public function user()
     {
@@ -58,6 +58,10 @@ class AdvertModel extends Model
     public function status()
     {
         return $this->belongsTo(AdvertsStatusModel::class, 'adverts_status_id', 'id');
+    }
+    public function action_status()
+    {
+        return $this->belongsTo(AdvertsActiveStatusModel::class, 'adverts_active_status_id', 'id');
     }
 
     public function image_latest()

@@ -46,7 +46,18 @@
 
                         </div>
                     </div>
+                    <div class="form-group {{ $errors->has('adverts_active_statuses') ? ' has-error' : '' }}">
+                        <label class="col-lg-3 control-label">Статус:</label>
+                        <div class="col-lg-8">
+                            <div class="ui-select">
+                                {!!Form::select('adverts_active_status_id', $adverts_active_statuses,null,array('class' => 'form-control'))!!}
+                                @if ($errors->has('category_id'))
+                                    <span class="error"><strong>{{ $errors->first('category_id') }}</strong></span>
+                                @endif
+                            </div>
 
+                        </div>
+                    </div>
                     <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                         <label class="col-lg-3 control-label">Описание:</label>
                         <div class="col-lg-8">
@@ -103,7 +114,7 @@
                             <div class="text-center">
                                 {{--{{Form::file('images',['class'])}}--}}
                                 {{--<input type="file" class="text-center center-block well well-sm" name="images[]"--}}
-                                       {{--multiple>--}}
+                                {{--multiple>--}}
                                 {{Form::file('images[]',['class'=>'text-center center-block well well-sm','multiple'=>"multiple"])}}
 
                             </div>
@@ -129,4 +140,4 @@
 
         </div>
     </div>
-@endsection
+    @endsection

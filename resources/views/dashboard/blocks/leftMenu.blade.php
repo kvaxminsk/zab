@@ -12,29 +12,35 @@
                 {{ $user->name}}
             </div>
             {{--<div class="profile-usertitle-job">--}}
-                {{--Developer--}}
+            {{--Developer--}}
             {{--</div>--}}
         </div>
         <!-- END SIDEBAR USER TITLE -->
         <!-- SIDEBAR BUTTONS -->
-        {{--<div class="profile-userbuttons">--}}
-            {{--<button type="button" class="btn btn-success btn-sm">Follow</button>--}}
-            {{--<button type="button" class="btn btn-danger btn-sm">Message</button>--}}
-        {{--</div>--}}
-        <!-- END SIDEBAR BUTTONS -->
+    {{--<div class="profile-userbuttons">--}}
+    {{--<button type="button" class="btn btn-success btn-sm">Follow</button>--}}
+    {{--<button type="button" class="btn btn-danger btn-sm">Message</button>--}}
+    {{--</div>--}}
+    <!-- END SIDEBAR BUTTONS -->
         <!-- SIDEBAR MENU -->
         <div class="profile-usermenu">
             <ul class="nav">
+                <li {!! classActiveSegment(3, 'show_user_adverts') !!}>
+                    <a href="{{route('dashboard')}}">
+                        <i class="glyphicon glyphicon-user"></i>
+                        Новое объявления </a>
+                </li>
+                <li {!! classActiveSegment(3, 'show_user_adverts') !!}>
+                    <a href="{{route('showUserAdverts')}}">
+                        <i class="glyphicon glyphicon-user"></i>
+                        Мои Объявления </a>
+                </li>
+
                 <li {!! classActiveSegment(2, 'profile') !!}>
                     <a href="{{route('userProfilePage', ['id'=>$user->id])}}">
                         <i class="glyphicon glyphicon-home"></i>
                         Профиль </a>
                 </li>
-                <li {!! classActiveSegment(3, 'show_user_adverts') !!}>
-                    <a href="{{route('showUserAdverts')}}">
-                        <i class="glyphicon glyphicon-user"></i>
-                        Объявления </a>
-                </li >
                 @if(Auth::user()->id == $user->id)
                     <li {!! classActiveSegment(3, 'edit') !!}>
                         <a href="{{route('editUserProfilePage')}}">

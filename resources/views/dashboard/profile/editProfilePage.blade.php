@@ -9,7 +9,7 @@
             <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4 center-block top">
             </div>
             <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4 center-block top">
-                <img style="width:150px;height:150px;"
+                <img style="width:150px;"
                      src="{{($image_path) ? Storage::disk('public')->url($image_path) : 'https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png'}}"
                      alt="stack photo" class="img">
                 <div class="text-center">

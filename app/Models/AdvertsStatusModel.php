@@ -12,12 +12,12 @@ class AdvertsStatusModel extends Model
 
     public static function getAdvertsStatusPublish()
     {
-        return AdvertsStatusModel::find(2)->id;
+        return AdvertsStatusModel::find(3)->id;
     }
 
     public static function getAdvertsStatusDeleted()
     {
-        return AdvertsStatusModel::find(4)->id;
+        return AdvertsStatusModel::find(5)->id;
     }
 
 }

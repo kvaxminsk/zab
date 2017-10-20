@@ -34,7 +34,7 @@
                         <div class="container">
                             @foreach ($adverts as $advert)
                                 <tr>
-                                    <td>  <img style="width:150px;height:130px;"
+                                    <td>  <img style="width:150px;"
                                                src="{{Storage::disk('public')->url($advert->image_latest->path)}}"
                                                alt="stack photo" class="img"></td>
                                     <td>{{$advert->title}}</td>

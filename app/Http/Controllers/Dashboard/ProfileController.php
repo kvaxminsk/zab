@@ -114,7 +114,10 @@ class ProfileController extends Controller
                 $imgResize = \Image::make($image->getRealPath());
                 $filename = time() . '.' . $image->getClientOriginalExtension();
                 $path = public_path('img/products/' . $filename);
-                $imgResize->resize(100, 100)->save($path);
+
+                $imgResize->resize(150, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($path);
                 $pathResize = $userHash . '/profile/' . base64url_encode(strcode($image->getClientOriginalName(), 'zabiraydarom_user_image')) . '_resize.' . $image->getClientOriginalExtension();
                 $storageImageResize = \Storage::put($pathResize, file_get_contents($path));
                 if ($storageImageResize) {

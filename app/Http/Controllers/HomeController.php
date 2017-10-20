@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdvertModel;
+use App\Models\AdvertsStatusModel;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,7 +25,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $advertsFirst = AdvertModel::take(3)->get();
+        $advertsFirst = AdvertModel::take(3)->where('adverts_status_id', AdvertsStatusModel::getAdvertsStatusPublish())->get();
         $advertsSecond = AdvertModel::skip(3)->take(3)->get();
         $advertsThird = AdvertModel::skip(6)->take(3)->get();
 //        var_dump(User::getCurrentUser()->isRoleAdmin());die();

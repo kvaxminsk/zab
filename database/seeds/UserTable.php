@@ -2,10 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-use App\Models\User;
-use App\Models\Role;
-
-class UserTableSeeder extends Seeder
+class UserTable extends Seeder
 {
     /**
      * Run the database seeds.
@@ -37,5 +34,5 @@ class UserTableSeeder extends Seeder
         $admin->password = bcrypt('secretadmin');
         $admin->save();
         $admin->roles()->attach($role_admin);
-    }  
+    }
 }

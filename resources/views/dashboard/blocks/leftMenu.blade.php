@@ -27,29 +27,29 @@
             <ul class="nav">
                 <li {!! classActiveSegment(3, 'show_user_adverts') !!}>
                     <a href="{{route('dashboard')}}">
-                        <i class="glyphicon glyphicon-user"></i>
+                        <i class="glyphicon glyphicon-envelope"></i>
                         Новые объявления </a>
                 </li>
                 <li {!! classActiveSegment(3, 'show_user_adverts') !!}>
                     <a href="{{route('showUserAdverts')}}">
-                        <i class="glyphicon glyphicon-user"></i>
+                        <i class="glyphicon glyphicon-file"></i>
                         Мои Объявления </a>
                 </li>
 
                 <li {!! classActiveSegment(2, 'profile') !!}>
                     <a href="{{route('userProfilePage', ['id'=>$user->id])}}">
-                        <i class="glyphicon glyphicon-home"></i>
+                        <i class="glyphicon glyphicon-user"></i>
                         Профиль </a>
                 </li>
                 @if(Auth::user()->id == $user->id)
                     <li {!! classActiveSegment(3, 'edit') !!}>
                         <a href="{{route('editUserProfilePage')}}">
-                            <i class="glyphicon glyphicon-user"></i>
+                            <i class="glyphicon glyphicon-pencil"></i>
                             Редактировать профиль </a>
                     </li>
                     <li {!! classActiveSegment(2, 'cashout') !!}>
                         <a href="{{route('addAdvert')}}">
-                            <i class="glyphicon glyphicon-user"></i>
+                            <i class="glyphicon glyphicon-plus"></i>
                             Добавить объявление </a>
                     </li>
                 @endif

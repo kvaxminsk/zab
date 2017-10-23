@@ -26,16 +26,16 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $advertsFirst = AdvertModel::take(3)->where('adverts_status_id', AdvertsStatusModel::getAdvertsStatusPublish())->get();
-        $advertsSecond = AdvertModel::skip(3)->take(3)->get();
-        $advertsThird = AdvertModel::skip(6)->take(3)->get();
-//        var_dump(User::getCurrentUser()->isRoleAdmin());die();
+//        $advertsSecond = AdvertModel::skip(3)->take(3)->get();
+//        $advertsThird = AdvertModel::skip(6)->take(3)->get();
+////        var_dump(User::getCurrentUser()->isRoleAdmin());die();
 //        $request->user()->authorizeRoles(['user', 'manager', 'admin']);
 //        $user = User::getCurrentUser();
 //        var_dump('ddd');
         return view('welcome', [
             'adverts_first' => $advertsFirst,
-            'adverts_second' => $advertsSecond,
-            'adverts_third' => $advertsThird,
+//            'adverts_second' => $advertsSecond,
+//            'adverts_third' => $advertsThird,
         ]);
     }
 }

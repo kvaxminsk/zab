@@ -26,8 +26,15 @@
                                 Объявление</a>
                         </div>
                     </div>
+
                 </div>
                 <div class="panel-body">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label class="col-lg-12 control-label" style="color:orangered">Отдавать за "вкусняшки" нельзя! Даром - значит за спасибо!!!:</label>
+                        </div>
+
+                    </div>
                     {{ Form::open(array('route' => array('postAddAdvert'),'method' => 'post','class'=>'form-horizontal','files' => true)) }}
                     <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                         <label class="col-lg-3 control-label">Название:</label>

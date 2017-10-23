@@ -60,7 +60,7 @@
                         <li><a href="{{ route('register') }}">Регистрация</a></li>
                     @else
                         <li><a href="/">Главная</a></li>
-                        <li><a href="{{ route('login') }}">Новости</a></li>
+                        {{--<li><a href="{{ route('login') }}">Новости</a></li>--}}
                         <li><a href="{{route('addAdvert')}}">Добавить Объявление</a></li>
 
                         <li class="dropdown">

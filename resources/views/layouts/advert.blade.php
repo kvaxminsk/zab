@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Laravel</title>
+    <title>{{$advert->title}}</title>
 
     <!-- jQuery library -->
 
@@ -209,7 +209,7 @@
                     <li><a href="{{ route('register') }}">Регистрация</a></li>
                 @else
                     <li><a href="/">Главная</a></li>
-                    <li><a href="{{ route('login') }}">Новости</a></li>
+                    {{--<li><a href="{{ route('login') }}">Новости</a></li>--}}
                     <li><a href="{{route('addAdvert')}}">Добавить Объявление</a></li>
 
                     <li class="dropdown">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
 use App\Models\AdvertModel;
+use App\Models\AdvertsStatusModel;
 use App\Models\CategoryModel;
 use Illuminate\Http\Request;
 
@@ -12,18 +13,15 @@ class AdvertsController extends Controller
     public function category(Request $request,$categoryId)
     {
         if($categoryId) {
-            $adverts = AdvertModel::where('category_id', $categoryId)->paginate(10);
+            $adverts = AdvertModel::where('category_id', $categoryId)->where('adverts_status_id', AdvertsStatusModel::getAdvertsStatusPublish())->paginate(10);
         }else {
 
-            $adverts = AdvertModel::paginate(10);
+//            $adverts = AdvertModel::paginate(10);
+            $adverts = AdvertModel::where('adverts_status_id', AdvertsStatusModel::getAdvertsStatusPublish())->paginate(10);
         }
 
         $categories = CategoryModel::whereNotNull('parent_id')->get();
-//        var_dump($categories);die();
-//        var_dump(User::getCurrentUser()->isRoleAdmin());die();
-//        $request->user()->authorizeRoles(['user', 'manager', 'admin']);
-//        $user = User::getCurrentUser();
-//        var_dump('ddd');
+
         return view('category', [
             'adverts' => $adverts,
             'categories' => $categories,

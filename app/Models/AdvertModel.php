@@ -74,4 +74,5 @@ class AdvertModel extends Model
         return $this->hasMany(AdvertsImageModel::class, 'advert_id');
 //        return $this->hasOne(UsersImageModel::class, 'user_id')->latest();
     }
+
 }

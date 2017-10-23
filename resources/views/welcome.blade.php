@@ -12,7 +12,7 @@
                     <figcaption>
                         <h3>{{$advert->title}}</h3>
                         <p>{{str_limit($advert->description,100)}}</p>
-
+                        <p style="color:limegreen">{{$advert->action_status->title}}</p>
                     </figcaption>
                     <i class="ion-information"></i>
                     <a href="{{route('showAdvert', ['advert_id'=>$advert->id])}}"></a>

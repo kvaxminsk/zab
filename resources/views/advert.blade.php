@@ -59,7 +59,7 @@
                                             class="fa fa-star-o"></i></div>
                                 <hr>
                                 {{--<div class="product-price">$ 1234.00</div>--}}
-                                <div class="product-stock">В наличии</div>
+                                <div class="product-stock">{{$advert->action_status->title}}</div>
                                 <hr>
 
                                 <div class="btn-group wishlist">

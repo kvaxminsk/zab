@@ -18,11 +18,11 @@
             @foreach($adverts as $advert)
                 <div class="col-md-4">
                     <figure class="snip1423_category">
-                        <img src="{{ ($advert->image_latest) ? Storage::disk('public')->url($advert->image_latest->path) : 'https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png'}}" alt="sample57"/>
+                        <img style="max-height:150px;"src="{{ ($advert->image_latest) ? Storage::disk('public')->url($advert->image_latest->path) : 'https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png'}}" alt="sample57"/>
                         <figcaption>
                             <h3>{{$advert->title}}</h3>
                             <p>{{str_limit($advert->description,80)}}</p>
-
+                            <p style="color:limegreen">{{$advert->action_status->title}}</p>
                         </figcaption>
                         <i class="ion-information"></i>
                         <a href="{{route('showAdvert', ['advert_id'=>$advert->id])}}"></a>
@@ -34,10 +34,14 @@
             @endif
         </div>
     </div>
-
+    </br>
+    </br>
+    </br>
+    </br>
     <div class="panel-footer">
         <div class="row">
             <?php echo $adverts->render(); ?>
         </div>
     </div>
+
 @endsection

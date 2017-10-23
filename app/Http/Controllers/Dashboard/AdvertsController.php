@@ -45,32 +45,36 @@ class AdvertsController extends Controller
         $advertsActiveStatuses = AdvertsActiveStatusModel::all()->pluck('title', 'id');
         $images = AdvertsImageModel::where('advert_id', $advert_id)->get();
 
-        $countries[0] = 'Выберите страну';
-        $countries += CountryModel::all(['title_ru', 'country_id'])->sortBy('title_ru')->pluck('title_ru', 'country_id')->toArray();
-        if ($user->region_id || $advert->region_id) {
-            $user->region_id = $advert->region_id ? $advert->region_id : $user->region_id;
-            $user->country_id = $advert->country_id ? $advert->country_id : $user->country_id;
-            $regions = RegionModel::where('country_id', $user->country_id)->get(['title_ru', 'region_id'])->sortBy('title_ru')->pluck('title_ru', 'region_id')->toArray();
-//            $regions[0] += 'Выберите регион';
+//        $countries[0] = 'Выберите страну';
+//        $countries += CountryModel::all(['title_ru', 'country_id'])->sortBy('title_ru')->pluck('title_ru', 'country_id')->toArray();
+//        if ($user->region_id || $advert->region_id) {
+//            $user->region_id = $advert->region_id ? $advert->region_id : $user->region_id;
+//            $user->country_id = $advert->country_id ? $advert->country_id : $user->country_id;
+//            $regions = RegionModel::where('country_id', $user->country_id)->get(['title_ru', 'region_id'])->sortBy('title_ru')->pluck('title_ru', 'region_id')->toArray();
+////            $regions[0] += 'Выберите регион';
+//        } else {
+//            $regions[0] = 'Выберите регион';
+//        }
+//
+//        if ($user->city_id || $advert->city_id) {
+//            $user->city_id = $advert->region_id ? $advert->region_id : $user->city_id;
+//            $cities = CityModel::where('region_id', $user->region_id)->get(['title_ru', 'city_id'])->sortBy('title_ru')->pluck('title_ru', 'city_id')->toArray();
+////            $cities[0] += 'Выберите город';
+//        } else {
+//            $cities[0] = 'Выберите регион';
+//        }
+        if ($advert->city_id) {
+            $city = CityModel::where('city_id', $advert->city_id)->first(['title_ru', 'city_id'])->title_ru;
         } else {
-            $regions[0] = 'Выберите регион';
+            $city = '';
         }
-
-        if ($user->city_id || $advert->city_id) {
-            $user->city_id = $advert->region_id ? $advert->region_id : $user->city_id;
-            $cities = CityModel::where('region_id', $user->region_id)->get(['title_ru', 'city_id'])->sortBy('title_ru')->pluck('title_ru', 'city_id')->toArray();
-//            $cities[0] += 'Выберите город';
-        } else {
-            $cities[0] = 'Выберите регион';
-        }
-
         return view('dashboard.adverts.editUserAdvert', [
                 'advert' => $advert,
                 'categories' => $categories,
                 'images' => $images,
-                'countries' => $countries,
-                'regions' => $regions,
-                'cities' => $cities,
+//                'countries' => $countries,
+//                'regions' => $regions,
+                'city' => $city,
                 'user' => $user,
                 'adverts_active_statuses' => $advertsActiveStatuses,
             ]
@@ -82,30 +86,17 @@ class AdvertsController extends Controller
         $user = \Auth::user();
         $categories = CategoryModel::whereNotNull('parent_id')->pluck('name', 'id');
         $countries[0] = 'Выберите страну';
-        $countries += CountryModel::all(['title_ru', 'country_id'])->sortBy('title_ru')->pluck('title_ru', 'country_id')->toArray();
         $advertsActiveStatuses = AdvertsActiveStatusModel::all()->pluck('title', 'id');
-//        var_dump($regions);
-        if ($user->region_id) {
-
-            $regions = RegionModel::where('country_id', $user->country_id)->get(['title_ru', 'region_id'])->sortBy('title_ru')->pluck('title_ru', 'region_id')->toArray();
-//            $regions[0] += 'Выберите регион';
-        } else {
-            $regions[0] = 'Выберите регион';
-        }
-
         if ($user->city_id) {
-
-            $cities = CityModel::where('region_id', $user->region_id)->get(['title_ru', 'city_id'])->sortBy('title_ru')->pluck('title_ru', 'city_id')->toArray();
-//            $cities[0] += 'Выберите город';
+            $city = CityModel::where('city_id', $user->city_id)->first(['title_ru', 'city_id'])->title_ru;
         } else {
-            $cities[0] = 'Выберите регион';
+            $city = '';
         }
         return view('dashboard.adverts.addUserAdvert',
             [
                 'categories' => $categories,
-                'countries' => $countries,
-                'regions' => $regions,
-                'cities' => $cities,
+                'countries' => json_encode($countries),
+                'city' => $city,
                 'user' => $user,
                 'adverts_active_statuses' => $advertsActiveStatuses,
             ]
@@ -120,18 +111,21 @@ class AdvertsController extends Controller
             'description' => 'required|min:10',
 //            'images' => 'required',
             'adverts_active_status_id' => 'required:integer',
-            'country_id' => 'required:integer',
-            'region_id' => 'required:integer',
-            'city_id' => 'required:integer',
+//            'country_id' => 'required:integer',
+//            'region_id' => 'required:integer',
+            'city_id' => 'required:string',
         );
         $input = Input::all();
         $input['user_id'] = \Auth::user()->id;
         $validation = \Validator::make(
-//            Input::all(),
             $input,
             $rules
         );
 
+        $city = CityModel::where('title_ru', Input::get('city_id'))->first();
+        $input['city_id'] = $city->city_id;
+        $input['country_id'] = $city->country_id;
+        $input['region_id'] = $city->region_id;
         if ($validation->passes()) {
             $user = \Auth::user();
 
@@ -163,9 +157,9 @@ class AdvertsController extends Controller
             'description' => 'required|min:10',
             'address' => 'required',
             'adverts_active_status_id' => 'integer',
-            'country_id' => 'integer',
-            'region_id' => 'required|integer',
-            'city_id' => 'required|integer',
+//            'country_id' => 'integer',
+//            'region_id' => 'required|integer',
+            'city_id' => 'required|string',
         );
         $advert_id = (int)$request::get('advert_id');
         $input = Input::all();
@@ -174,6 +168,12 @@ class AdvertsController extends Controller
             $rules
         );
         $advert = AdvertModel::find($advert_id);
+
+        $city = CityModel::where('title_ru', Input::get('city_id'))->first();
+        $input['city_id'] = $city->city_id;
+        $input['country_id'] = $city->country_id;
+        $input['region_id'] = $city->region_id;
+//        var_dump($city->country_id);die();
         if ($validation->passes()) {
             $user = \Auth::user();
 

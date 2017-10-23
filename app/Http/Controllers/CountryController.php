@@ -3,11 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Models\CityModel;
+use App\Models\CountryModel;
 use App\Models\RegionModel;
-use Illuminate\Http\Request;
 
 class CountryController extends Controller
 {
+
+    public function jsonCountries()
+    {
+        $countries = CountryModel::all(['title_ru'])->sortBy('title_ru')->toArray();
+//        var_dump($countries);die();
+        foreach ($countries as $country) {
+            $countriesTitle[] = $country['title_ru'];
+        }
+        return response()->json([$countriesTitle]);
+    }
+    public function jsonCities()
+    {
+        $cities = CityModel::where('country_id', 3)->get(['title_ru'])->sortBy('title_ru')->toArray();
+
+        foreach ($cities as $city) {
+            $citiesTitle[] = $city['title_ru'];
+        }
+//        var_dump(response()->json([$citiesTitle]));die();
+        return response()->json([$citiesTitle]);
+    }
+
     public function regions(\Request $request)
     {
 //        die('fff');

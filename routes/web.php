@@ -29,6 +29,8 @@ Route::get('/advert/{advert_id}', 'Main\AdvertsController@showAdvert')->name('sh
 
 Route::get('/regions', 'CountryController@regions')->name('regions');
 Route::get('/cities', 'CountryController@cities')->name('cities');
+Route::get('/jsonCountries', 'CountryController@jsonCountries')->name('jsonCountries');
+Route::get('/json_cities', 'CountryController@jsonCities')->name('jsonCities');
 
 Route::get('/social_login/{provider}', 'SocialController@login');
 Route::get('/logout', 'SocialController@logout');

@@ -28,7 +28,7 @@
                 <li {!! classActiveSegment(3, 'show_user_adverts') !!}>
                     <a href="{{route('dashboard')}}">
                         <i class="glyphicon glyphicon-user"></i>
-                        Новое объявления </a>
+                        Новые объявления </a>
                 </li>
                 <li {!! classActiveSegment(3, 'show_user_adverts') !!}>
                     <a href="{{route('showUserAdverts')}}">

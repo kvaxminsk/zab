@@ -3,8 +3,7 @@
 @section('seo_title')Profile @endsection
 
 @section('content')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet'
-          type='text/css'>
+
 
     <div class="row">
         <div class="col-md-12">

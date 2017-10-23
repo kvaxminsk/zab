@@ -49,30 +49,34 @@ class ProfileController extends Controller
         } catch (\ErrorException $e) {
             $usersImagePath = null;
         }
-        $countries[0] = 'Выберите страну';
-        $countries += CountryModel::all(['title_ru', 'country_id'])->sortBy('title_ru')->pluck('title_ru', 'country_id')->toArray();
+//        $countries[0] = 'Выберите страну';
+//        $countries += CountryModel::all(['title_ru', 'country_id'])->sortBy('title_ru')->pluck('title_ru', 'country_id')->toArray();
+//
+//
+//        if ($user->country_id) {
+//            $regions[0] = 'Выберите регион';
+//            $regions += RegionModel::where('country_id', $user->country_id)->get(['title_ru', 'region_id'])->sortBy('title_ru')->pluck('title_ru', 'region_id')->toArray();
+//        } else {
+//            $regions = ['0' => 'Выберите регион'];
+//        }
 
-
-        if ($user->country_id) {
-            $regions[0] = 'Выберите регион';
-            $regions += RegionModel::where('country_id', $user->country_id)->get(['title_ru', 'region_id'])->sortBy('title_ru')->pluck('title_ru', 'region_id')->toArray();
+//        if ($user->region_id) {
+//            $cities[0] = 'Выберите город';
+//            $cities += CityModel::where('region_id', $user->region_id)->get(['title_ru', 'city_id'])->sortBy('title_ru')->pluck('title_ru', 'city_id')->toArray();
+//        } else {
+//            $cities[0] = 'Выберите город';
+//        }
+        if ($user->city_id) {
+            $city = CityModel::where('city_id', $user->city_id)->first(['title_ru', 'city_id'])->title_ru;
         } else {
-            $regions = ['0' => 'Выберите регион'];
+            $city = '';
         }
-
-        if ($user->region_id) {
-            $cities[0] = 'Выберите город';
-            $cities += CityModel::where('region_id', $user->region_id)->get(['title_ru', 'city_id'])->sortBy('title_ru')->pluck('title_ru', 'city_id')->toArray();
-        } else {
-            $cities[0] = 'Выберите город';
-        }
-
         return view('dashboard.profile.editProfilePage', [
             'user' => $user,
             'image_path' => $usersImagePath,
-            'countries' => $countries,
-            'regions' => $regions,
-            'cities' => $cities,
+//            'countries' => $countries,
+//            'regions' => $regions,
+            'city' => $city,
         ]);
     }
 
@@ -84,25 +88,26 @@ class ProfileController extends Controller
             'name' => 'required|min:6|max:50',
             'username' => 'required|min:6|max:50',
             'phone' => 'integer',
-            'country_id' => 'integer',
-            'region_id' => 'integer',
-            'city_id' => 'integer'
+//            'country_id' => 'integer',
+//            'region_id' => 'integer',
+            'city_id' => 'string'
         );
-//        $messages = [
-//            'required' => 'Обязательно для заполнения :attribute.',
-//            'min' => 'Минимальное количество символов :min',
-//            'max' => 'Минимальное количество символов :max',
-//            'integer' => 'Разрешены только цифры :attribute',
-//
-//            ];
-        $validation = \Validator::make(Input::all(), $rules);
+
+        $input = Input::all();
+//        var_dump($input);die();
+
+        $validation = \Validator::make($input, $rules);
+        $city = CityModel::where('title_ru', Input::get('city_id'))->first();
+        $input['city_id'] = $city->city_id;
+        $input['country_id'] = $city->country_id;
+        $input['region_id'] = $city->region_id;
         if ($validation->passes()) {
 
             $userModel = User::find($user->id);
 
-            $userModel->update(Input::all());
+            $userModel->update($input);
             $userModel->save();
-//            var_dump(Input::all());die();
+//            var_dump($input);die();
 //            var_dump($userModel->phone);die();
             $image = $request::file('image');
 //            var_dump($image);die();

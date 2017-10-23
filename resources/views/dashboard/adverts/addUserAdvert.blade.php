@@ -3,6 +3,10 @@
 @section('seo_title')Profile @endsection
 
 @section('content')
+    <script>
+
+    </script>
+
     <div class="row">
         <div class="col-lg-12">
             @include('dashboard.errmsg')
@@ -69,31 +73,51 @@
 
                     </div>
 
-                    <div class="form-group{{ $errors->has('country_id') ? ' has-error' : '' }}">
-                        <label class="col-lg-3 control-label">Страна</label>
-                        <div class="col-lg-8">
-                            {!!Form::select('country_id', $countries,$user->country_id,array('class' => 'form-control','id'=>'country_id',))!!}
-                            @if ($errors->has('country_id'))
-                                <span class="error"><strong>{{ $errors->first('country_id') }}</strong></span>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="form-group{{ $errors->has('region_id') ? ' has-error' : '' }}">
-                        <label class="col-lg-3 control-label">Область</label>
-                        <div class="col-lg-8">
-                            {!!Form::select('region_id', $regions, $user->region_id,array('class' => 'form-control','id'=>'region_id'))!!}
-                            @if ($errors->has('region_id'))
-                                <span class="error"><strong>{{ $errors->first('region_id') }}</strong></span>
-                            @endif
-                        </div>
-                    </div>
+
                     <div class="form-group{{ $errors->has('city_id') ? ' has-error' : '' }}">
-                        <label class="col-lg-3 control-label">Город</label>
+                        <label class="col-lg-3 control-label">Город:</label>
                         <div class="col-lg-8">
-                            {!!Form::select('city_id', $cities,$user->city_id,array('class' => 'form-control','id'=>'city_id'))!!}
-                            @if ($errors->has('city_id'))
-                                <span class="error"><strong>{{ $errors->first('city_id') }}</strong></span>
-                            @endif
+                            <div class="ui-select" style=>
+                                <div class="typeahead__container">
+                                    <div class="typeahead__field">
+                                        <span class="typeahead__query">
+                                            {!!Form::text('city_id', $city, array('class' => 'form-control js_typeahead_city_v1','id'=>'country_id','autocomplete'=>"off",'style' =>"font-size:14px;"))!!}
+                                            <script>
+                                                $(document).ready(function () {
+                                                    var url = '/json_cities';
+                                                    let cities;
+                                                    $.get(
+                                                        url,
+                                                        function (result) {
+                                                            cities = result;
+                                                            console.log(cities[0]);
+                                                            $.typeahead({
+                                                                input: '.js_typeahead_city_v1',
+                                                                order: "desc",
+                                                                source: {
+                                                                    data: cities[0]
+                                                                },
+                                                                callback: {
+                                                                    onInit: function (node) {
+                                                                        console.log('Typeahead Initiated on ' + node.selector);
+                                                                    }
+                                                                }
+                                                            });
+                                                            //                                                        console.log(result);
+                                                            //                                                        console.log(JSON.parse('[1, 5, "false"]'));
+                                                        },
+                                                        "json"
+                                                    );
+                                                    //                                                countries();
+                                                    //                                                function countries(countries = []) {
+
+                                                    //                                                }
+                                                });
+                                            </script>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">

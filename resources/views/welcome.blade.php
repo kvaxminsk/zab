@@ -1,6 +1,6 @@
 @extends('layouts.home')
 @section('content')
-    <div class="row">
+    <div class="row" style="margin-left:0px">
         <div class="title m-b-md">
             <a href="{{route('category',['category_id' => 0])}}">Вещи</a>
         </div>

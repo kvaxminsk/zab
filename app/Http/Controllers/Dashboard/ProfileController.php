@@ -88,6 +88,7 @@ class ProfileController extends Controller
             'name' => 'required|min:6|max:50',
             'username' => 'required|min:6|max:50',
             'phone' => 'integer',
+            'password_confirm' => 'same:password',
 //            'country_id' => 'integer',
 //            'region_id' => 'integer',
             'city_id' => 'string'
@@ -101,16 +102,14 @@ class ProfileController extends Controller
         $input['city_id'] = $city->city_id;
         $input['country_id'] = $city->country_id;
         $input['region_id'] = $city->region_id;
+        $input['password'] =bcrypt($input['password']);
         if ($validation->passes()) {
 
             $userModel = User::find($user->id);
 
             $userModel->update($input);
             $userModel->save();
-//            var_dump($input);die();
-//            var_dump($userModel->phone);die();
             $image = $request::file('image');
-//            var_dump($image);die();
             if ($image) {
 
                 $userHash = base64url_encode(strcode($user->email, 'zabiraydarom_user'));

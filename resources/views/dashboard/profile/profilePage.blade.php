@@ -20,14 +20,14 @@
                     {{--<li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{$user->email}}--}}
                     </p></li>
                     @if($user->country)
-                        <li><p style="font-size:14px"><span class="glyphicon glyphicon-map-marker one"
+                        <li><p style="font-size:14px"><a target="_blank" href="https://www.google.ru/maps/place/{{urlencode(( ($user->country) ? $user->country->title_ru :'') .'+'. ( ($user->region) ? $user->region->title_ru :'') . '+' .(($user->city) ? $user->city->title_ru :''))}}"><span class="glyphicon glyphicon-map-marker one"
                                                             style="width:50px;"></span>{{ ($user->country) ? $user->country->title_ru :''}}
                                 , {{ ($user->region) ? $user->region->title_ru :''}}
                                 , {{ ($user->city) ? $user->city->title_ru :''}}
-                            </p></li>
+                                </a></p></li>
                     @endif
-                    <li><p style="font-size:14px"><span class="glyphicon glyphicon-user one"
-                                                        style="width:50px;"></span>{{$user->email}}
+                    <li><p style="font-size:14px"><span class="glyphicon glyphicon-phone one"
+                                                        style="width:50px;"></span>{{$user->phone}}
                         </p></li>
                     @if($user->social_vk)
                         <li><p style="font-size:14px"><a href="https://vk.com/id{{$user->social_vk->provider_user_id}}">VK</a>
@@ -41,5 +41,5 @@
             </div>
         </div>
     </div>
-
+    ( ($user->country) ? $user->country->title_ru :'') .'+'. ( ($user->region) ? $user->region->title_ru :'') . '+' .(($user->city) ? $user->city->title_ru :'')
 @endsection

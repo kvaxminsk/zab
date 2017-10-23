@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('username') ? ' has-error' : '' }}">
-                    <label class="col-lg-3 control-label">Логин(будет отображаться везде):</label>
+                    <label class="col-lg-3 control-label">Логин:</label>
                     <div class="col-lg-8">
                         {{Form::text('username',$user->username,array('class' => 'form-control'))}}
                         @if ($errors->has('username'))
@@ -55,7 +55,24 @@
                         @endif
                     </div>
                 </div>
-
+                <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
+                    <label class="col-lg-3 control-label">Пароль</label>
+                    <div class="col-lg-8">
+                        {{Form::password('password',null,array('class' => 'form-control has-error' ))}}
+                        @if ($errors->has('password'))
+                            <span class="error"><strong>{{ $errors->first('password') }}</strong></span>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group {{ $errors->has('password_confirm') ? ' has-error' : '' }}">
+                    <label class="col-lg-3 control-label">Повторить пароль</label>
+                    <div class="col-lg-8">
+                        {{Form::password('password_confirm',null,array('class' => 'form-control has-error' ))}}
+                        @if ($errors->has('password_confirm'))
+                            <span class="error"><strong>{{ $errors->first('password_confirm') }}</strong></span>
+                        @endif
+                    </div>
+                </div>
                 <div class="form-group {{ $errors->has('city_id') ? ' has-error' : '' }}">
                     <label class="col-lg-3 control-label">Город</label>
                     <div class="col-lg-8">

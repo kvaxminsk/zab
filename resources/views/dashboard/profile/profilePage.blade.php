@@ -26,11 +26,18 @@
                                 , {{ ($user->city) ? $user->city->title_ru :''}}
                                 </a></p></li>
                     @endif
+                    @if($user->phone)
                     <li><p style="font-size:14px"><span class="glyphicon glyphicon-phone one"
                                                         style="width:50px;"></span>{{$user->phone}}
                         </p></li>
+                    @endif
                     @if($user->social_vk)
                         <li><p style="font-size:14px"><a href="https://vk.com/id{{$user->social_vk->provider_user_id}}">VK</a>
+                            </p>
+                        </li>
+                    @endif
+                    @if($user->social_tw)
+                        <li><p style="font-size:14px"><a href=https://twitter.com/intent/user?user_id={{$user->social_tw->provider_user_id}}">VK</a>
                             </p>
                         </li>
                     @endif
@@ -41,5 +48,4 @@
             </div>
         </div>
     </div>
-    ( ($user->country) ? $user->country->title_ru :'') .'+'. ( ($user->region) ? $user->region->title_ru :'') . '+' .(($user->city) ? $user->city->title_ru :'')
 @endsection

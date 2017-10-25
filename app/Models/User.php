@@ -169,4 +169,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserSocialAccountModel::class)->where('provider', 'vkontakte');
     }
+    public function social_tw()
+    {
+        return $this->hasOne(UserSocialAccountModel::class)->where('provider', 'twitter');
+    }
 }

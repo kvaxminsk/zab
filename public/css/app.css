@@ -6169,7 +6169,8 @@ button.close {
 }
 
 .carousel, .carousel-inner {
-    position: relative
+    position: relative;
+    max-height: 320px;
 }
 
 .popover > .arrow {
@@ -6887,6 +6888,7 @@ li {
     max-width: 100%;
     vertical-align: top;
     position: relative;
+    max-height:150px;
 }
 .snip1423 figcaption {
     padding: 20px 15px;

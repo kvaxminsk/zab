@@ -40,8 +40,7 @@ class AdvertsController extends Controller
     {
         $user = \Auth::user();
         $advert = AdvertModel::where('user_id', $user->id)->where('id', $advert_id)->first();
-        if(!$advert)
-        {
+        if (!$advert) {
             return \Redirect::back();
         }
         $categories = CategoryModel::whereNotNull('parent_id')->pluck('name', 'id');
@@ -176,9 +175,20 @@ class AdvertsController extends Controller
                     $userHash = base64url_encode(strcode($user->email, 'zabiraydarom_user'));
                     $path = $userHash . '/' . $advert->id . '/' . base64url_encode(strcode($file->getClientOriginalName(), 'zabiraydarom_advert')) . '.' . $file->getClientOriginalExtension();
                     \Storage::put($path, file_get_contents($file));
+
+                    $pathResize = $userHash . '/' . $advert->id . '/' . base64url_encode(strcode($file->getClientOriginalName(), 'zabiraydarom_user_image')) . '_resize.' . $file->getClientOriginalExtension();
+
+                    $imgResize = \Image::make($file->getRealPath());
+                    $imgResize->resize(150, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save(\Storage::path($path));
+
+                    $storageImageResize = \Storage::put($pathResize, file_get_contents(\Storage::path($path)));
+
                     AdvertsImageModel::create([
                         'advert_id' => $advert->id,
                         'path' => $path,
+                        'path_resize_image' => $pathResize,
                         'user_id' => $user->id,
                     ]);
                 }

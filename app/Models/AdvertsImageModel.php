@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\Model;
 class AdvertsImageModel extends Model
 {
     protected $table = "adverts_images";
-    protected $fillable = ['advert_id', 'path', 'user_id'];
+    protected $fillable = ['advert_id', 'path', 'user_id','path_resize_image'];
 
     public function advert()
     {

@@ -158,8 +158,7 @@
                         <div class="container">
                             @foreach ($images as $image)
                                 <tr>
-                                    <td><img src="{{Storage::disk('public')->url($image->path)}}" width="100"
-                                             height="100"></td>
+                                    <td><img src="{{Storage::disk('public')->url($image->path_resize_image)}}" style="max-width:150px;max-height:150px;"></td>
                                     <td align="center">
                                         <a class="btn btn-danger"
                                            href="{{route('deleteAdvertImage',['image_id'=>$image->id])}}"><em

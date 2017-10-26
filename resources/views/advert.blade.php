@@ -1,5 +1,6 @@
 @extends('layouts.advert')
 @section('content')
+
     <div class="container-fluid">
         <div class="content-wrapper">
             <div class="item-container">
@@ -9,23 +10,38 @@
                             <div class="product col-md-5 service-image-left">
                                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                                     <!-- Indicators -->
-                                    <ol class="carousel-indicators">
-                                        @foreach($advert->images as $image)
-                                            <li data-target="#myCarousel" data-slide-to="{{$image->id}}"
-                                                class="active"></li>
-                                        @endforeach
-                                    </ol>
 
-                                    <!-- Wrapper for slides -->
+                                    @if(!empty($advert->images[0]))
+                                        <ol class="carousel-indicators">
+                                            @foreach($advert->images as $image)
+                                                <li data-target="#myCarousel" data-slide-to="{{$image->id}}"
+                                                    class="active"></li>
+                                            @endforeach
+                                        </ol>
+                                    @else
+                                        <ol class="carousel-indicators">
+                                                <li data-target="#myCarousel" data-slide-to="1"
+                                                    class="active"></li>
+                                        </ol>
+                                    @endif
+                                <!-- Wrapper for slides -->
                                     <div class="carousel-inner">
                                         <?php $i = 0;?>
-                                        @foreach($advert->images as $image)
-                                            <div class="item {{ $i == 0 ? 'active' : ''}}">
-                                                <img src="{{Storage::disk('public')->url($image->path)}}"
-                                                     alt="{{$advert->title}}_{{$image->advert_id}}">
-                                            </div>
-                                            <?php $i++?>
-                                        @endforeach
+                                        @if(!empty($advert->images[0]))
+                                            @foreach($advert->images as $image)
+                                                <div class="item {{ $i == 0 ? 'active' : ''}}">
+                                                    <img src="{{Storage::disk('public')->url($image->path)}}"
+                                                         alt="{{$advert->title}}_{{$image->advert_id}}">
+                                                </div>
+                                                <?php $i++?>
+                                            @endforeach
+                                        @else
+                                                <div class="item active">
+                                                    <img src="/images/site/no-image.png"
+                                                         alt="no-image">
+                                                </div>
+                                        @endif
+
                                         {{--<div class="item active">--}}
                                         {{--<img src="http://www.corsair.com/Media/catalog/product/g/s/gs600_psu_sideview_blue_2.png"--}}
                                         {{--alt="Chicago">--}}
@@ -63,7 +79,8 @@
                                 <hr>
 
                                 <div class="btn-group wishlist">
-                                    <a href="{{route('userProfilePage', ['id'=>$advert->user_id])}}" class="btn btn-danger">
+                                    <a href="{{route('userProfilePage', ['id'=>$advert->user_id])}}"
+                                       class="btn btn-danger">
                                         Связаться с автором
                                     </a>
                                 </div>

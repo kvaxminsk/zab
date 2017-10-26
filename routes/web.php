@@ -19,8 +19,6 @@ Auth::routes();
 
 
 
-Auth::routes();
-
 Route::get('/', 'HomeController@index')->name('homePage');
 Route::get('/category/{category_id}', 'Main\AdvertsController@category')->name('category');
 Route::get('/advert/{advert_id}', 'Main\AdvertsController@showAdvert')->name('showAdvert');

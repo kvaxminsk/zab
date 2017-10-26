@@ -131,7 +131,7 @@ class ProfileController extends Controller
                 $imgResize = \Image::make($image->getRealPath());
                 $filename = time() . '.' . $image->getClientOriginalExtension();
                 $path = public_path('images/uploads/' . $filename);
-var_dump($path);die();
+
                 $imgResize->resize(150, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($path);

@@ -177,13 +177,12 @@ class AdvertsController extends Controller
                     \Storage::put($path, file_get_contents($file));
 
                     $pathResize = $userHash . '/' . $advert->id . '/' . base64url_encode(strcode($file->getClientOriginalName(), 'zabiraydarom_user_image')) . '_resize.' . $file->getClientOriginalExtension();
-
+                    \Storage::put($pathResize, file_get_contents($file));
                     $imgResize = \Image::make($file->getRealPath());
                     $imgResize->resize(150, null, function ($constraint) {
                         $constraint->aspectRatio();
-                    })->save(\Storage::path($path));
+                    })->save(\Storage::path($pathResize));
 
-                    $storageImageResize = \Storage::put($pathResize, file_get_contents(\Storage::path($path)));
 
                     AdvertsImageModel::create([
                         'advert_id' => $advert->id,

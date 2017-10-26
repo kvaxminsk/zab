@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\CityModel;
-use App\Models\CountryModel;
-use App\Models\RegionModel;
 use App\Models\User;
 use App\Models\UsersImageModel;
 use Illuminate\Support\Facades\Input;
@@ -91,7 +89,7 @@ class ProfileController extends Controller
             'password_confirm' => 'same:password',
 //            'country_id' => 'integer',
 //            'region_id' => 'integer',
-            'city_id' => 'string'
+            'city_id' => 'required'
         );
 
         $input = Input::all();
@@ -99,10 +97,23 @@ class ProfileController extends Controller
 
         $validation = \Validator::make($input, $rules);
         $city = CityModel::where('title_ru', Input::get('city_id'))->first();
-        $input['city_id'] = $city->city_id;
-        $input['country_id'] = $city->country_id;
-        $input['region_id'] = $city->region_id;
-        $input['password'] =bcrypt($input['password']);
+        if ($city) {
+            $input['city_id'] = $city->city_id;
+            $input['country_id'] = $city->country_id;
+            $input['region_id'] = $city->region_id;
+        } else {
+            $input['city_id'] = null;
+            $input['country_id'] = null;
+            $input['region_id'] = null;
+        }
+        if($input['password'])
+        {
+            $input['password'] = bcrypt($input['password']);
+        }
+        else {
+            unset($input['password']);
+        }
+
         if ($validation->passes()) {
 
             $userModel = User::find($user->id);

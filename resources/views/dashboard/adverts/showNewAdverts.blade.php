@@ -33,7 +33,7 @@
                             @foreach ($adverts as $advert)
                                 <tr>
                                     <td style="width:30%"> <a href="{{route('showAdvert', ['advert_id'=>$advert->id])}}"> <img style="max-width:150px;max-height:120px"
-                                               src="{{Storage::disk('public')->url($advert->image_latest->path)}}"
+                                               src="{{(($advert->image_latest) ? (Storage::disk('public')->url($advert->image_latest->path)) :'/images/site/no-image.png') }}"
                                                                                                              alt="stack photo" class="img"></a></td>
                                     <td><a href="{{route('showAdvert', ['advert_id'=>$advert->id])}}">{{$advert->title}}</a></td>
                                     <td>{{str_limit($advert->description,100)}}</td>
@@ -43,13 +43,9 @@
 
                         </tbody>
                     </table>
+                    <?php echo $adverts->render(); ?>
+                </div>
 
-                </div>
-                <div class="panel-footer">
-                    <div class="row">
-                        <?php echo $adverts->render(); ?>
-                    </div>
-                </div>
             </div>
 
         </div>

@@ -21,9 +21,7 @@
                     </p></li>
                     @if($user->country)
                         <li><p style="font-size:14px"><a target="_blank" href="https://www.google.ru/maps/place/{{urlencode(( ($user->country) ? $user->country->title_ru :'') .'+'. ( ($user->region) ? $user->region->title_ru :'') . '+' .(($user->city) ? $user->city->title_ru :''))}}"><span class="glyphicon glyphicon-map-marker one"
-                                                            style="width:50px;"></span>{{ ($user->country) ? $user->country->title_ru :''}}
-                                , {{ ($user->region) ? $user->region->title_ru :''}}
-                                , {{ ($user->city) ? $user->city->title_ru :''}}
+                                                            style="width:50px;"></span>{{ ($user->country) ? $user->country->title_ru :''}}{{ ($user->region) ?  ', ' . $user->region->title_ru :''}}{{ ($user->city) ? ', ' . $user->city->title_ru :''}}
                                 </a></p></li>
                     @endif
                     @if($user->phone)

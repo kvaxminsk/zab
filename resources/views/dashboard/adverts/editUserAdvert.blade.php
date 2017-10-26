@@ -176,11 +176,7 @@
                     {{ Form::close() }}
 
                 </div>
-                <div class="panel-footer">
-                    <div class="row">
-                        <!--                        --><?php //echo $adverts->render(); ?>
-                    </div>
-                </div>
+
             </div>
 
         </div>

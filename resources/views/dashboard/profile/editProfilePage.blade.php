@@ -29,52 +29,52 @@
 
                 {{Form::hidden('advert_id', $user->id)}}
                 <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
-                    <label class="col-lg-3 control-label">Имя:</label>
+                    <label class="col-lg-3 control-label">Имя<b class="star">*</b>:</label>
                     <div class="col-lg-8">
-                        {{Form::text('name',$user->name,array('class' => 'form-control'))}}
+                        {{Form::text('name',$user->name,array('class' => 'form-control','required'=>'required'))}}
                         @if ($errors->has('name'))
                             <span class="error"><strong>{{ $errors->first('name') }}</strong></span>
                         @endif
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('username') ? ' has-error' : '' }}">
-                    <label class="col-lg-3 control-label">Логин:</label>
+                    <label class="col-lg-3 control-label">Логин<b class="star">*</b>:</label>
                     <div class="col-lg-8">
-                        {{Form::text('username',$user->username,array('class' => 'form-control'))}}
+                        {{Form::text('username',$user->username,array('class' => 'form-control','required'=>'required'))}}
                         @if ($errors->has('username'))
                             <span class="error"><strong>{{ $errors->first('username') }}</strong></span>
                         @endif
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('phone') ? ' has-error' : '' }}">
-                    <label class="col-lg-3 control-label">Телефон</label>
+                    <label class="col-lg-3 control-label">Телефон<b class="star">*</b>:</label>
                     <div class="col-lg-8">
-                        {{Form::text('phone',$user->phone,array('class' => 'form-control has-error' ))}}
+                        {{Form::text('phone',$user->phone,array('class' => 'form-control has-error','required'=>'required'))}}
                         @if ($errors->has('phone'))
                             <span class="error"><strong>{{ $errors->first('phone') }}</strong></span>
                         @endif
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
-                    <label class="col-lg-3 control-label">Пароль</label>
+                    <label class="col-lg-3 control-label">Пароль<b class="star">*</b>:</label>
                     <div class="col-lg-8">
-                        {{Form::password('password',null,array('class' => 'form-control has-error' ))}}
+                        {{Form::password('password',array('class' => 'form-control has-error','required'=>'required' ))}}
                         @if ($errors->has('password'))
                             <span class="error"><strong>{{ $errors->first('password') }}</strong></span>
                         @endif
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('password_confirm') ? ' has-error' : '' }}">
-                    <label class="col-lg-3 control-label">Повторить пароль</label>
+                    <label class="col-lg-3 control-label">Повторите пароль<b class="star">*</b>:</label>
                     <div class="col-lg-8">
-                        {{Form::password('password_confirm',null,array('class' => 'form-control has-error' ))}}
+                        {{Form::password('password_confirm',array('class' => 'form-control has-error','required'=>'required' ))}}
                         @if ($errors->has('password_confirm'))
                             <span class="error"><strong>{{ $errors->first('password_confirm') }}</strong></span>
                         @endif
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('city_id') ? ' has-error' : '' }}">
-                    <label class="col-lg-3 control-label">Город</label>
+                    <label class="col-lg-3 control-label">Город<b class="star">*</b>:</label>
                     <div class="col-lg-8">
                         <div class="typeahead__container">
                             <div class="typeahead__field">

@@ -31,15 +31,16 @@
                 <div class="panel-body">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <label class="col-lg-12 control-label" style="color:orangered">Отдавать за "вкусняшки" нельзя! Даром - значит за спасибо!!!:</label>
+                            <label class="col-lg-12 control-label" style="color:orangered">Отдавать за "вкусняшки"
+                                нельзя! Даром - значит за спасибо!!!</label>
                         </div>
 
                     </div>
                     {{ Form::open(array('route' => array('postAddAdvert'),'method' => 'post','class'=>'form-horizontal','files' => true)) }}
                     <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                        <label class="col-lg-3 control-label">Название:</label>
+                        <label class="col-lg-3 control-label">Название<b class="star">*</b>:</label>
                         <div class="col-lg-8">
-                            {{Form::text('title','',array('class' => 'form-control'))}}
+                            {{Form::text('title','',array('class' => 'form-control','required'=>'required' ))}}
                             @if ($errors->has('title'))
                                 <span class="error"><strong>{{ $errors->first('title') }}</strong></span>
                             @endif
@@ -70,25 +71,23 @@
                         </div>
                     </div>
                     <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                        <label class="col-lg-3 control-label">Описание:</label>
+                        <label class="col-lg-3 control-label">Описание<b class="star">*</b>:</label>
                         <div class="col-lg-8">
-                            {{Form::textarea('description',null,array('class' => 'form-control'))}}
+                            {{Form::textarea('description',null,array('class' => 'form-control','required'=>'required' ))}}
                             @if ($errors->has('description'))
                                 <span class="error"><strong>{{ $errors->first('description') }}</strong></span>
                             @endif
                         </div>
 
                     </div>
-
-
                     <div class="form-group{{ $errors->has('city_id') ? ' has-error' : '' }}">
-                        <label class="col-lg-3 control-label">Город:</label>
+                        <label class="col-lg-3 control-label">Город<b class="star">*</b>:</label>
                         <div class="col-lg-8">
                             <div class="ui-select" style=>
                                 <div class="typeahead__container">
                                     <div class="typeahead__field">
                                         <span class="typeahead__query">
-                                            {!!Form::text('city_id', $city, array('class' => 'form-control js_typeahead_city_v1','id'=>'country_id','autocomplete'=>"off",'style' =>"font-size:14px;"))!!}
+                                            {!!Form::text('city_id', $city, array('class' => 'form-control js_typeahead_city_v1','id'=>'country_id','autocomplete'=>"off",'style' =>"font-size:14px;",'required'=>'required' ))!!}
                                             <script>
                                                 $(document).ready(function () {
                                                     var url = '/json_cities';
@@ -162,11 +161,7 @@
                     {{ Form::close() }}
 
                 </div>
-                <div class="panel-footer">
-                    <div class="row">
-                        <!--                        --><?php //echo $adverts->render(); ?>
-                    </div>
-                </div>
+
             </div>
 
         </div>

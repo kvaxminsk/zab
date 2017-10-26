@@ -127,7 +127,8 @@ return [
         'title' => "Название",
         'images ' => "Изображения",
         'password' => "Пароль",
-        'password_confirm' => "Повторить пароль",
+        'password_confirm' => "Повторите пароль",
+        'city_id' => "Город",
     ],
 
 ];

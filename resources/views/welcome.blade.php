@@ -8,9 +8,8 @@
             <div class="col-md-4">
 
                 <figure class="snip1423">
-                    <img src="{{ ($advert->image_latest) ? Storage::disk('public')->url($advert->image_latest->path) : 'https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png'}}" alt="sample57"/>
+                    <img src="{{ ($advert->image_latest) ? Storage::disk('public')->url($advert->image_latest->path) : '/images/site/no-image.png'}}" alt="sample57"/>
                     <figcaption>
-                        <h3>{{$advert->title}}</h3>
                         <p>{{str_limit($advert->description,50)}}</p>
                         <p style="color:limegreen">{{$advert->action_status->title}}</p>
                     </figcaption>

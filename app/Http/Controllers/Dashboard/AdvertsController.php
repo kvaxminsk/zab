@@ -6,10 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\AdvertModel;
 use App\Models\AdvertsActiveStatusModel;
 use App\Models\AdvertsImageModel;
+use App\Models\AdvertsStatusModel;
 use App\Models\CategoryModel;
 use App\Models\CityModel;
-use App\Models\CountryModel;
-use App\Models\RegionModel;
 use Illuminate\Support\Facades\Input;
 
 class AdvertsController extends Controller
@@ -40,29 +39,16 @@ class AdvertsController extends Controller
     public function editAdvert(\Request $request, $advert_id)
     {
         $user = \Auth::user();
-        $advert = AdvertModel::find($advert_id);
+        $advert = AdvertModel::where('user_id', $user->id)->where('id', $advert_id)->first();
+        if(!$advert)
+        {
+            return \Redirect::back();
+        }
         $categories = CategoryModel::whereNotNull('parent_id')->pluck('name', 'id');
         $advertsActiveStatuses = AdvertsActiveStatusModel::all()->pluck('title', 'id');
         $images = AdvertsImageModel::where('advert_id', $advert_id)->get();
 
-//        $countries[0] = 'Выберите страну';
-//        $countries += CountryModel::all(['title_ru', 'country_id'])->sortBy('title_ru')->pluck('title_ru', 'country_id')->toArray();
-//        if ($user->region_id || $advert->region_id) {
-//            $user->region_id = $advert->region_id ? $advert->region_id : $user->region_id;
-//            $user->country_id = $advert->country_id ? $advert->country_id : $user->country_id;
-//            $regions = RegionModel::where('country_id', $user->country_id)->get(['title_ru', 'region_id'])->sortBy('title_ru')->pluck('title_ru', 'region_id')->toArray();
-////            $regions[0] += 'Выберите регион';
-//        } else {
-//            $regions[0] = 'Выберите регион';
-//        }
-//
-//        if ($user->city_id || $advert->city_id) {
-//            $user->city_id = $advert->region_id ? $advert->region_id : $user->city_id;
-//            $cities = CityModel::where('region_id', $user->region_id)->get(['title_ru', 'city_id'])->sortBy('title_ru')->pluck('title_ru', 'city_id')->toArray();
-////            $cities[0] += 'Выберите город';
-//        } else {
-//            $cities[0] = 'Выберите регион';
-//        }
+
         if ($advert->city_id) {
             $city = CityModel::where('city_id', $advert->city_id)->first(['title_ru', 'city_id'])->title_ru;
         } else {
@@ -133,17 +119,20 @@ class AdvertsController extends Controller
                 $input
             );
             $files = $request::file('images');
-            foreach ($files as $file) {
+            if ($files) {
+                foreach ($files as $file) {
 
-                $userHash = base64url_encode(strcode($user->email, 'zabiraydarom_user'));
-                $path = $userHash . '/' . $advert->id . '/' . base64url_encode(strcode($file->getClientOriginalName(), 'zabiraydarom_advert')) . '.' . $file->getClientOriginalExtension();
-                \Storage::put($path, file_get_contents($file));
-                AdvertsImageModel::create([
-                    'advert_id' => $advert->id,
-                    'path' => $path,
-                    'user_id' => $user->id,
-                ]);
+                    $userHash = base64url_encode(strcode($user->email, 'zabiraydarom_user'));
+                    $path = $userHash . '/' . $advert->id . '/' . base64url_encode(strcode($file->getClientOriginalName(), 'zabiraydarom_advert')) . '.' . $file->getClientOriginalExtension();
+                    \Storage::put($path, file_get_contents($file));
+                    AdvertsImageModel::create([
+                        'advert_id' => $advert->id,
+                        'path' => $path,
+                        'user_id' => $user->id,
+                    ]);
+                }
             }
+
         } else {
             return redirect(route('addAdvert'))->withErrors($validation);
         }
@@ -178,6 +167,7 @@ class AdvertsController extends Controller
             $user = \Auth::user();
 
             $advert->update($input);
+            $advert->adverts_status_id = AdvertsStatusModel::getAdvertsStatusUnPublish();
             $advert->save();
             $files = $request::file('images');
             if ($files) {

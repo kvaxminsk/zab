@@ -74,5 +74,18 @@ class AdvertModel extends Model
         return $this->hasMany(AdvertsImageModel::class, 'advert_id');
 //        return $this->hasOne(UsersImageModel::class, 'user_id')->latest();
     }
+    public function country()
+    {
+        return $this->belongsTo(CountryModel::class, 'country_id', 'country_id');
+    }
 
+    public function region()
+    {
+        return $this->belongsTo(RegionModel::class, 'region_id', 'region_id');
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(CityModel::class, 'city_id', 'city_id');
+    }
 }

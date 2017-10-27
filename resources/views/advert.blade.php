@@ -67,12 +67,13 @@
 
                             <div class="col-md-7">
                                 <div class="product-title">{{$advert->title}}</div>
-                                <div class="product-desc">{{str_limit($advert->description)}}
+                                <div class="product-desc">{{($advert->country) ? $advert->country->title_ru :''}}{{ ($advert->region) ?  ', ' . $advert->region->title_ru :''}}{{ ($advert->city) ? ', ' . $advert->city->title_ru :''}} - {{str_limit($advert->address)}}
                                 </div>
-                                <div class="product-rating"><i class="fa fa-star gold"></i> <i
-                                            class="fa fa-star gold"></i>
-                                    <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i
-                                            class="fa fa-star-o"></i></div>
+                                {{--<div class="product-rating"><i class="fa fa-star gold"></i> <i--}}
+                                            {{--class="fa fa-star gold"></i>--}}
+                                    {{--<i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i--}}
+                                            {{--class="fa fa-star-o"></i>--}}
+                                {{--</div>--}}
                                 <hr>
                                 {{--<div class="product-price">$ 1234.00</div>--}}
                                 <div class="product-stock">{{$advert->action_status->title}}</div>

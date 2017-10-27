@@ -98,7 +98,7 @@ class AdvertsController extends Controller
             'adverts_active_status_id' => 'required:integer',
 //            'country_id' => 'required:integer',
 //            'region_id' => 'required:integer',
-            'city_id' => 'required:string',
+            'city_id' => 'required:string|exists:_cities,title_ru',
         );
         $input = Input::all();
         $input['user_id'] = \Auth::user()->id;
@@ -107,13 +107,13 @@ class AdvertsController extends Controller
             $rules
         );
 
-        $city = CityModel::where('title_ru', Input::get('city_id'))->first();
-        $input['city_id'] = $city->city_id;
-        $input['country_id'] = $city->country_id;
-        $input['region_id'] = $city->region_id;
+
         if ($validation->passes()) {
             $user = \Auth::user();
-
+            $city = CityModel::where('title_ru', Input::get('city_id'))->first();
+            $input['city_id'] = $city->city_id;
+            $input['country_id'] = $city->country_id;
+            $input['region_id'] = $city->region_id;
             $advert = AdvertModel::create(
                 $input
             );
@@ -131,7 +131,11 @@ class AdvertsController extends Controller
                     ]);
                 }
             }
-
+//            \Mail::send('','',function($m)
+//            {
+//                $m->to('korol1011@yhandex.ru')->subject('add new advert');
+//            });
+            mail('korol1011@gmail.com', 'advert add', 'add new advert','add_adverts');
         } else {
             return redirect(route('addAdvert'))->withErrors($validation);
         }
@@ -147,7 +151,7 @@ class AdvertsController extends Controller
             'adverts_active_status_id' => 'integer',
 //            'country_id' => 'integer',
 //            'region_id' => 'required|integer',
-            'city_id' => 'required|string',
+            'city_id' => 'required|string|exists:_cities,title_ru',
         );
         $advert_id = (int)$request::get('advert_id');
         $input = Input::all();

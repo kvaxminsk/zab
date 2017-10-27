@@ -68,8 +68,8 @@
                             </div>
                         </div>
                     </form>
-                    <div class="btn btn-custom5 btn-lg copy_but"><a href="{{$url = URL::to('social_login/twitter')}}">Twitter</a></div>
-                    <div class="btn btn-custom5 btn-lg copy_but"><a href="{{$url = URL::to('social_login/vkontakte')}}">VK</a></div>
+                    <a class="social social-tw" href="{{$url = URL::to('social_login/twitter')}}"></a>
+                    <a class="social social-vk" href="{{$url = URL::to('social_login/vkontakte')}}"></a>
                 </div>
             </div>
         </div>

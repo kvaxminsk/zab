@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 @import url(https://fonts.googleapis.com/css?family=Oswald:300,400);
+
 @charset "UTF-8";
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
@@ -6726,7 +6727,6 @@ button.close {
     }
 }
 
-
 /***************Profile***************/
 /***
 User Profile Sidebar by @keenthemes
@@ -6841,26 +6841,24 @@ body {
     background: #fff;
     min-height: 460px;
 }
+
 /***************Profile***************/
 
-
-
 /*******************showProfilePages*************/
-
 
 .details li {
     list-style: none;
 }
+
 li {
-    margin-bottom:10px;
+    margin-bottom: 10px;
 
 }
+
 /*******************showProfilePages*************/
 /******************show adverts************/
 
 /******************show adverts************/
-
-
 
 .snip1423 {
     text-overflow: ellipsis;
@@ -6883,47 +6881,56 @@ li {
     -webkit-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
 }
+
 .snip1423 * {
     -webkit-box-sizing: padding-box;
     box-sizing: padding-box;
     -webkit-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
 }
+
 .snip1423 img {
     max-width: 100%;
     vertical-align: top;
     position: relative;
-    max-height:150px;
+    max-height: 150px;
 }
+
 .snip1423 figcaption {
     padding: 20px 15px;
 }
+
 .snip1423 h3,
 .snip1423 p {
     margin: 0;
 }
+
 .snip1423 h3 {
     font-size: 1.3em;
     font-weight: 400;
     margin-bottom: 5px;
     text-transform: uppercase;
 }
+
 .snip1423 p {
     font-size: 0.9em;
     letter-spacing: 1px;
     font-weight: 300;
 }
+
 .snip1423 .price {
     font-weight: 500;
     font-size: 1.4em;
     line-height: 48px;
     letter-spacing: 1px;
 }
+
 .snip1423 .price s {
     margin-right: 5px;
     opacity: 0.5;
     font-size: 0.9em;
 }
+
 .snip1423 i {
     position: absolute;
     bottom: 0;
@@ -6939,6 +6946,7 @@ li {
     font-size: 1.2em;
     border: 4px solid #ffffff;
 }
+
 .snip1423 a {
     position: absolute;
     top: 0;
@@ -6947,11 +6955,13 @@ li {
     right: 0;
     z-index: 1;
 }
+
 .snip1423:hover,
 .snip1423.hover {
     -webkit-transform: translateY(-5px);
     transform: translateY(-5px);
 }
+
 .snip1423:hover i,
 .snip1423.hover i {
     background-color: #2980b9;
@@ -6980,46 +6990,55 @@ li {
     -webkit-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
 }
+
 .snip1423_category * {
     -webkit-box-sizing: padding-box;
     box-sizing: padding-box;
     -webkit-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
 }
+
 .snip1423_category img {
     max-width: 100%;
     vertical-align: top;
     position: relative;
 }
+
 .snip1423_category figcaption {
     padding: 20px 15px;
 }
+
 .snip1423_category h3,
 .snip1423_category p {
     margin: 0;
 }
+
 .snip1423_category h3 {
     font-size: 1.3em;
     font-weight: 400;
     margin-bottom: 5px;
     text-transform: uppercase;
 }
+
 .snip1423_category p {
     font-size: 0.9em;
     letter-spacing: 1px;
     font-weight: 300;
 }
+
 .snip1423_category .price {
     font-weight: 500;
     font-size: 1.4em;
     line-height: 48px;
     letter-spacing: 1px;
 }
+
 .snip1423_category .price s {
     margin-right: 5px;
     opacity: 0.5;
     font-size: 0.9em;
 }
+
 .snip1423_category i {
     position: absolute;
     bottom: 0;
@@ -7035,6 +7054,7 @@ li {
     font-size: 1.2em;
     border: 4px solid #ffffff;
 }
+
 .snip1423_category a {
     position: absolute;
     top: 0;
@@ -7043,11 +7063,13 @@ li {
     right: 0;
     z-index: 1;
 }
+
 .snip1423_category:hover,
 .snip1423_category.hover {
     -webkit-transform: translateY(-5px);
     transform: translateY(-5px);
 }
+
 .snip1423_category:hover i,
 .snip1423_category.hover i {
     background-color: #2980b9;
@@ -7057,7 +7079,7 @@ li {
         		Theme Elements
 *********************************************/
 
-.gold{
+.gold {
     color: #FFBF00;
 }
 
@@ -7065,39 +7087,39 @@ li {
 					PRODUCTS
 *********************************************/
 
-.product{
+.product {
     /*border: 1px solid #dddddd;*/
     height: 321px;
 }
 
-.product>img{
+.product > img {
     max-width: 230px;
 }
 
-.product-rating{
+.product-rating {
     font-size: 20px;
     margin-bottom: 25px;
 }
 
-.product-title{
+.product-title {
     font-size: 20px;
 }
 
-.product-desc{
+.product-desc {
     font-size: 14px;
 }
 
-.product-price{
+.product-price {
     font-size: 22px;
 }
 
-.product-stock{
+.product-stock {
     color: #74DF00;
     font-size: 20px;
     margin-top: 10px;
 }
 
-.product-info{
+.product-info {
     margin-top: 50px;
 }
 
@@ -7115,7 +7137,7 @@ li {
     border-radius: 0px;
 }
 
-.container-fluid{
+.container-fluid {
     max-width: 1140px;
     margin: 0 auto;
 }
@@ -7174,22 +7196,65 @@ li {
 }
 
 /*.service-image-left {*/
-    /*padding-right: 50px;*/
+/*padding-right: 50px;*/
 /*}*/
 
 .service-image-right {
     padding-left: 50px;
 }
 
-.service-image-left > center > img,.service-image-right > center > img{
+.service-image-left > center > img, .service-image-right > center > img {
     max-height: 155px;
 }
 
 .error {
-    color:red;
+    color: red;
 }
-.star
-{
-    color:red;
+
+.star {
+    color: red;
     font-size: x-large;
 }
+
+/****************social *****************/
+.share {
+    width: 270px;
+    margin: 0 auto;
+    margin-top: 120px;
+    padding: 10px;
+    padding-left: 20px;
+    background: #ecf0f1;
+}
+
+.share b {
+    margin-right: 15px;
+    font-weight: normal;
+    text-transform: uppercase;
+    color: #7f8c8d;
+}
+
+.social {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    background: #bdc3c7 url("/images/site/social.png") no-repeat;
+    vertical-align: middle;
+}
+
+.social-vk {
+    background-color: #6d8fb3;
+    background-position: 0 0;
+}
+
+.social-fb {
+    background-color: #526da3;
+    background-position: -40px 0;
+}
+
+.social-tw {
+    background-color: #73bfe6;
+    background-position: -80px 0;
+}
+
+/****************social *****************/

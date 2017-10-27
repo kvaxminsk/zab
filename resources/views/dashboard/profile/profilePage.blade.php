@@ -29,19 +29,21 @@
                                                         style="width:50px;"></span>{{$user->phone}}
                         </p></li>
                     @endif
+                    <li><p style="font-size:14px"><span class="glyphicon glyphicon-user one"
+                                                        style="width:50px;"></span>{{$user->status->title}}
+                        </p></li>
                     @if($user->social_vk)
-                        <li><p style="font-size:14px"><a href="https://vk.com/id{{$user->social_vk->provider_user_id}}">VK</a>
+                        <li><p style="font-size:14px"><a class="social social-vk" href="https://vk.com/id{{$user->social_vk->provider_user_id}}"></a>
                             </p>
                         </li>
                     @endif
                     @if($user->social_tw)
-                        <li><p style="font-size:14px"><a href=https://twitter.com/intent/user?user_id={{$user->social_tw->provider_user_id}}">VK</a>
+                        <li><p style="font-size:14px"><a  class="social social-tw"href=https://twitter.com/intent/user?user_id={{$user->social_tw->provider_user_id}}">VK</a>
                             </p>
                         </li>
                     @endif
-                    <li><p style="font-size:14px"><span class="glyphicon glyphicon-user one"
-                                                        style="width:50px;"></span>{{$user->status->title}}
-                        </p>
+
+
                 </ul>
             </div>
         </div>

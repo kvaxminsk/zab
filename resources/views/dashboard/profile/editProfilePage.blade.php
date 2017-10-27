@@ -18,7 +18,7 @@
                      src="{{($image_path) ? Storage::disk('public')->url($image_path) : 'https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png'}}"
                      alt="stack photo" class="img">
                 <div class="text-center">
-                    {{Form::file('image',['class'=>'text-center center-block well well-sm','multiple'=>"multiple"])}}
+                    {{Form::file('image',['class'=>'text-center center-block','multiple'=>"multiple"])}}
                 </div>
             </div>
 
@@ -121,6 +121,19 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-md-3 control-label"></label>
+                    <div class="col-md-8">
+                        <script type="text/javascript" src="//vk.com/js/api/openapi.js?150"></script>
+
+                        <!-- VK Widget -->
+                        <div id="vk_allow_messages_from_community"></div>
+                        <script type="text/javascript">
+                            VK.Widgets.AllowMessagesFromCommunity("vk_allow_messages_from_community", {height: 22}, 80041037);
+                        </script>
+                    </div>
+
+
+                </div><div class="form-group">
                     <label class="col-md-3 control-label"></label>
                     <div class="col-md-8">
                         {{Form::submit('Сохранить',array('class'=>'btn btn-primary'))}}

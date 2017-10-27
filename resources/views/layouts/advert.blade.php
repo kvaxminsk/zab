@@ -29,5 +29,6 @@
 </div>
 @include('template.footer')
 @include('template.yandex_metrik')
+@include('template.vk_online')
 </body>
 </html>

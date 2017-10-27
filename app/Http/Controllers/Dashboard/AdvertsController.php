@@ -17,7 +17,7 @@ class AdvertsController extends Controller
     {
         $user = \Auth::user();
         $adverts = AdvertModel::where('user_id', $user->id)->paginate(10);
-        return view('dashboard.adverts.showUserAdvert', ['adverts' => $adverts]);
+        return view('dashboard.adverts.showUserAdverts', ['adverts' => $adverts]);
     }
 
     public function deleteAdvert(\Request $request, $advert_id)
@@ -124,9 +124,18 @@ class AdvertsController extends Controller
                     $userHash = base64url_encode(strcode($user->email, 'zabiraydarom_user'));
                     $path = $userHash . '/' . $advert->id . '/' . base64url_encode(strcode($file->getClientOriginalName(), 'zabiraydarom_advert')) . '.' . $file->getClientOriginalExtension();
                     \Storage::put($path, file_get_contents($file));
+
+                    $pathResize = $userHash . '/' . $advert->id . '/' . base64url_encode(strcode($file->getClientOriginalName(), 'zabiraydarom_user_image')) . '_resize.' . $file->getClientOriginalExtension();
+                    \Storage::put($pathResize, file_get_contents($file));
+                    $imgResize = \Image::make($file->getRealPath());
+                    $imgResize->resize(150, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save(\Storage::path($pathResize));
+
                     AdvertsImageModel::create([
                         'advert_id' => $advert->id,
                         'path' => $path,
+                        'path_resize_image' => $pathResize,
                         'user_id' => $user->id,
                     ]);
                 }
@@ -137,7 +146,7 @@ class AdvertsController extends Controller
 //            });
             mail('korol1011@gmail.com', 'advert add', 'add new advert','add_adverts');
         } else {
-            return redirect(route('addAdvert'))->withErrors($validation);
+            return redirect(route('addAdvert'))->withInput(Input::all())->withErrors($validation);
         }
         return redirect(route('editAdvert', ['advert_id' => $advert->id]))->withSucess('Данные успешно сохранены');
     }

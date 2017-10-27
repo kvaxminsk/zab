@@ -18,10 +18,7 @@
             <div class="panel panel-default panel-table">
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col col-xs-6">
-                            <h3 class="panel-title"></h3>
-                        </div>
-                        <div class="col col-xs-6 text-right">
+                        <div class="col col-xs-6 text-left">
                             <a href="{{route('addAdvert')}}" type="button" class="btn btn-sm btn-primary btn-create">Добавить
                                 Объявление</a>
                         </div>
@@ -145,7 +142,7 @@
                                 {{--{{Form::file('images',['class'])}}--}}
                                 {{--<input type="file" class="text-center center-block well well-sm" name="images[]"--}}
                                 {{--multiple>--}}
-                                {{Form::file('images[]',['class'=>'text-center center-block well well-sm','multiple'=>"multiple"])}}
+                                {{Form::file('images[]',['class'=>'text-center center-block ','multiple'=>"multiple",'min'=>'1', 'max'=>'10'])}}
 
                             </div>
                         </div>

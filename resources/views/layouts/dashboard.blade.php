@@ -28,19 +28,20 @@
 </head>
 <body>
 @include('template.nav')
-<div class="container">
-         <div class="row profile">
-            @include('dashboard.blocks.leftMenu')
-            <div class="col-md-9">
-                <div class="profile-content">
-                    @yield('content')
+<div class="flex-center position-ref full-height">
+    <div class="container">
+             <div class="row profile">
+                @include('dashboard.blocks.leftMenu')
+                <div class="col-md-9">
+                    <div class="profile-content">
+                        @yield('content')
+                    </div>
                 </div>
             </div>
         </div>
 </div>
-
 @include('template.footer')
 @include('template.yandex_metrik')
-
+@include('template.vk_online')
 </body>
 </html>

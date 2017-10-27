@@ -24,8 +24,16 @@
                     <li><a href="{{ route('register') }}">Регистрация</a></li>
                 @else
                     <li><a href="/">Главная</a></li>
+                    <li> <a href="http://zab.local/category/0" >Все объявления</a></li>
+                    @foreach($categories_menu as $category)
+                        <li>  <a href="{{route('category',['category_id'=> $category->id])}}">{{$category->name}}</a></li>
+                    @endforeach
+                    {{--@foreach($categoriesMenu as $category)--}}
+                        {{--<a href="{{route('category',['category_id'=> $category->id])}}"--}}
+                           {{--class="list-group-item {{ ($category_id == $category->id) ? 'active' : '' }}">{{$category->name}}</a>--}}
+                    {{--@endforeach--}}
                     {{--<li><a href="{{ route('login') }}">Новости</a></li>--}}
-                    <li><a href="{{route('addAdvert')}}">Добавить Объявление</a></li>
+                    <li><a style="margin-top: -7px;" href="{{route('addAdvert')}}"><button  class="btn btn-primary" style="color:white">Добавить Объявление</button></a></li>
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"

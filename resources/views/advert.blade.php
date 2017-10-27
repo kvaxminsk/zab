@@ -20,10 +20,10 @@
                                         </ol>
                                     @else
                                         <ol class="carousel-indicators">
-                                                <li data-target="#myCarousel" data-slide-to="1"
-                                                    class="active"></li>
+                                            <li data-target="#myCarousel" data-slide-to="1"
+                                                class="active"></li>
                                         </ol>
-                                    @endif
+                                @endif
                                 <!-- Wrapper for slides -->
                                     <div class="carousel-inner">
                                         <?php $i = 0;?>
@@ -36,10 +36,10 @@
                                                 <?php $i++?>
                                             @endforeach
                                         @else
-                                                <div class="item active">
-                                                    <img src="/images/site/no-image.png"
-                                                         alt="no-image">
-                                                </div>
+                                            <div class="item active">
+                                                <img src="/images/site/no-image.png"
+                                                     alt="no-image">
+                                            </div>
                                         @endif
 
                                         {{--<div class="item active">--}}
@@ -67,12 +67,13 @@
 
                             <div class="col-md-7">
                                 <div class="product-title">{{$advert->title}}</div>
-                                <div class="product-desc">{{($advert->country) ? $advert->country->title_ru :''}}{{ ($advert->region) ?  ', ' . $advert->region->title_ru :''}}{{ ($advert->city) ? ', ' . $advert->city->title_ru :''}} - {{str_limit($advert->address)}}
+                                <div class="product-desc">{{($advert->country) ? $advert->country->title_ru :''}}{{ ($advert->region) ?  ', ' . $advert->region->title_ru :''}}{{ ($advert->city) ? ', ' . $advert->city->title_ru :''}}
+                                    - {{str_limit($advert->address)}}
                                 </div>
                                 {{--<div class="product-rating"><i class="fa fa-star gold"></i> <i--}}
-                                            {{--class="fa fa-star gold"></i>--}}
-                                    {{--<i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i--}}
-                                            {{--class="fa fa-star-o"></i>--}}
+                                {{--class="fa fa-star gold"></i>--}}
+                                {{--<i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i--}}
+                                {{--class="fa fa-star-o"></i>--}}
                                 {{--</div>--}}
                                 <hr>
                                 {{--<div class="product-price">$ 1234.00</div>--}}
@@ -85,7 +86,26 @@
                                         Связаться с автором
                                     </a>
                                 </div>
+
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 left">
+                            <!-- Put this script tag to the <head> of your page -->
+                            <script type="text/javascript" src="//vk.com/js/api/openapi.js?150"></script>
+
+                            <script type="text/javascript">
+                                VK.init({apiId: 6236210, onlyWidgets: true});
+                            </script>
+
+                            <!-- Put this div tag to the place, where the Like block will be -->
+                            <div id="vk_like"></div>
+                            <script type="text/javascript">
+                                VK.Widgets.Like("vk_like", {type: "mini", height: 18});
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -120,6 +140,7 @@
                         <hr>
                     </div>
                 </div>
+
             </div>
         </div>
 @endsection

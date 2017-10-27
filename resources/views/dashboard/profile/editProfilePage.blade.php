@@ -37,6 +37,15 @@
                         @endif
                     </div>
                 </div>
+                <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
+                    <label class="col-lg-3 control-label">Почта:</label>
+                    <div class="col-lg-8">
+                        {{Form::text('email',$user->email,array('class' => 'form-control','disabled'=>'disabled'))}}
+                        @if ($errors->has('email'))
+                            <span class="error"><strong>{{ $errors->first('email') }}</strong></span>
+                        @endif
+                    </div>
+                </div>
                 <div class="form-group {{ $errors->has('username') ? ' has-error' : '' }}">
                     <label class="col-lg-3 control-label">Логин<b class="star">*</b>:</label>
                     <div class="col-lg-8">

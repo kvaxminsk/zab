@@ -106,6 +106,7 @@ class ProfileController extends Controller
             $input['country_id'] = null;
             $input['region_id'] = null;
         }
+        unset($input['email']);
         if($input['password'])
         {
             $input['password'] = bcrypt($input['password']);

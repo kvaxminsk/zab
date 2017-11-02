@@ -10,6 +10,7 @@
                 <figure class="snip1423">
                     <img src="{{ ($advert->image_latest) ? Storage::disk('public')->url($advert->image_latest->path_resize_image) : '/images/site/no-image.png'}}" alt="sample57"/>
                     <figcaption>
+                        <h3>{{$advert->title}}</h3>
                         <p>{{str_limit($advert->description,50)}}</p>
                         <p style="color:limegreen">{{$advert->action_status->title}}</p>
                     </figcaption>

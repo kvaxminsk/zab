@@ -6,8 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{$advert->title}}</title>
-
+    <meta name="description" content="{{$advert->description}}">
     <!-- jQuery library -->
+    <!-- meta tag for social -->
+    <meta property="og:locale" content="ru_RU"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{$advert->title}}"/>
+    <meta property="og:description" content="{{$advert->description}}"/>
+    <meta property="og:image" content="{{ ($advert->image_latest) ? Storage::disk('public')->url($advert->image_latest->path_resize_image) : '/images/site/no-image.png'}}"/>
+    <meta property="og:url" content="{{route('showAdvert', ['advert_id'=>$advert->id])}}"/>
+    <meta property="og:site_name" content="ЗабирайДаром.BY"/>
+    <!-- meta tag for social -->
+
 
 
     <!-- Fonts -->

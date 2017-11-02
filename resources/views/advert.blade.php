@@ -94,21 +94,29 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-5 left">
+                            {{--<!-- Put this script tag to the <head> of your page -->--}}
+                            {{--<script type="text/javascript" src="//vk.com/js/api/openapi.js?150"></script>--}}
+
+                            {{--<script type="text/javascript">--}}
+                                {{--VK.init({apiId: 6236210, onlyWidgets: true});--}}
+                            {{--</script>--}}
+
+                            {{--<!-- Put this div tag to the place, where the Like block will be -->--}}
+                            {{--<div id="vk_like"></div>--}}
+                            {{--<script type="text/javascript">--}}
+                                {{--VK.Widgets.Like("vk_like", {type: "mini", height: 18});--}}
+                            {{--</script>--}}
                             <!-- Put this script tag to the <head> of your page -->
-                            <script type="text/javascript" src="//vk.com/js/api/openapi.js?150"></script>
+                                <script type="text/javascript" src="https://vk.com/js/api/share.js?95" charset="windows-1251"></script>
 
-                            <script type="text/javascript">
-                                VK.init({apiId: 6236210, onlyWidgets: true});
-                            </script>
-
-                            <!-- Put this div tag to the place, where the Like block will be -->
-                            <div id="vk_like"></div>
-                            <script type="text/javascript">
-                                VK.Widgets.Like("vk_like", {type: "mini", height: 18});
-                            </script>
+                                <!-- Put this script tag to the place, where the Share button will be -->
+                                <script type="text/javascript"><!--
+                                    document.write(VK.Share.button(false,{type: "round_nocount", text: "Сохранить"}));
+                                    --></script>
                         </div>
                     </div>
                 </div>
+
                 <div class="container-fluid">
                     <div class="col-md-12 product-info">
                         <ul id="myTab" class="nav nav-tabs nav_tabs">

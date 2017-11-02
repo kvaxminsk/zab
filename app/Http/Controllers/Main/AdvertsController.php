@@ -10,14 +10,14 @@ use Illuminate\Http\Request;
 
 class AdvertsController extends Controller
 {
-    public function category(Request $request,$categoryId)
+    public function category(Request $request, $categoryId)
     {
-        if($categoryId) {
-            $adverts = AdvertModel::where('category_id', $categoryId)->where('adverts_status_id', AdvertsStatusModel::getAdvertsStatusPublish())->paginate(10);
-        }else {
+        if ($categoryId) {
+            $adverts = AdvertModel::where('category_id', $categoryId)->where('adverts_status_id', AdvertsStatusModel::getAdvertsStatusPublish())->orderBy('updated_at', 'DESC')->paginate(10);
+        } else {
 
 //            $adverts = AdvertModel::paginate(10);
-            $adverts = AdvertModel::where('adverts_status_id', AdvertsStatusModel::getAdvertsStatusPublish())->paginate(10);
+            $adverts = AdvertModel::where('adverts_status_id', AdvertsStatusModel::getAdvertsStatusPublish())->orderBy('updated_at', 'DESC')->paginate(10);
         }
 
         $categories = CategoryModel::whereNotNull('parent_id')->get();
@@ -29,14 +29,14 @@ class AdvertsController extends Controller
         ]);
     }
 
-    public function showAdvert(Request $request,$advert_id)
+    public function showAdvert(Request $request, $advert_id)
     {
 
-        if($advert_id) {
+        if ($advert_id) {
             $advert = AdvertModel::where('id', $advert_id)->first();
-        }else {
+        } else {
 
-           return \Redirect::back();
+            return \Redirect::back();
         }
 //        var_dump($advert->images);die();
         $categories = CategoryModel::whereNotNull('parent_id')->get();

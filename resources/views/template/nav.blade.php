@@ -19,15 +19,16 @@
             <ul class="nav navbar-nav navbar-right">
 
                 <!-- Authentication Links -->
+                <li><a href="/">Главная</a></li>
+                <li> <a href="/category/0" >Все объявления</a></li>
+                @foreach($categories_menu as $category)
+                    <li>  <a href="{{route('category',['category_id'=> $category->id])}}">{{$category->name}}</a></li>
+                @endforeach
                 @if (Auth::guest())
                     <li><a href="{{ route('login') }}">Войти</a></li>
                     <li><a href="{{ route('register') }}">Регистрация</a></li>
                 @else
-                    <li><a href="/">Главная</a></li>
-                    <li> <a href="http://zab.local/category/0" >Все объявления</a></li>
-                    @foreach($categories_menu as $category)
-                        <li>  <a href="{{route('category',['category_id'=> $category->id])}}">{{$category->name}}</a></li>
-                    @endforeach
+
                     {{--@foreach($categoriesMenu as $category)--}}
                         {{--<a href="{{route('category',['category_id'=> $category->id])}}"--}}
                            {{--class="list-group-item {{ ($category_id == $category->id) ? 'active' : '' }}">{{$category->name}}</a>--}}

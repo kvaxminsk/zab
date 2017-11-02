@@ -19,7 +19,6 @@ AdminSection::registerModel(AdvertModel::class, function (ModelConfiguration $mo
                 AdminColumn::text('status.title')->setLabel('Status'),
 
             ])
-            ->orderBy('id', 'desc')
             ->paginate(20);
     });
     $model->onEdit(function ($id = null) {

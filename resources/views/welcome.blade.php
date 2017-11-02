@@ -20,7 +20,27 @@
 
             </div>
         @endforeach
-    </div>
+    {{--</div> <div class="row" style="margin-left:0px">--}}
+        {{--<div class="title m-b-md">--}}
+            {{--<a href="{{route('category',['category_id' => 0])}}"></a>--}}
+        {{--</div>--}}
+        {{--@foreach($adverts_second as $advert)--}}
+            {{--<div class="col-md-4">--}}
+
+                {{--<figure class="snip1423">--}}
+                    {{--<img src="{{ ($advert->image_latest) ? Storage::disk('public')->url($advert->image_latest->path_resize_image) : '/images/site/no-image.png'}}" alt="sample57"/>--}}
+                    {{--<figcaption>--}}
+                        {{--<h3>{{$advert->title}}</h3>--}}
+                        {{--<p>{{str_limit($advert->description,50)}}</p>--}}
+                        {{--<p style="color:limegreen">{{$advert->action_status->title}}</p>--}}
+                    {{--</figcaption>--}}
+                    {{--<a href="{{route('showAdvert', ['advert_id'=>$advert->id])}}"><i class="ion-information"></i></a>--}}
+                    {{--<a href="{{route('showAdvert', ['advert_id'=>$advert->id])}}"></a>--}}
+                {{--</figure>--}}
+
+            {{--</div>--}}
+        {{--@endforeach--}}
+    {{--</div>--}}
     {{--<div class="row">--}}
         {{--<div class="title m-b-md">--}}
             {{--<a href="{{route('category',['category_id' => 0])}}">Вещи</a>--}}

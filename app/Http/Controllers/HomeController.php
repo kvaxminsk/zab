@@ -25,7 +25,8 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $advertsFirst = AdvertModel::take(3)->where('adverts_status_id', AdvertsStatusModel::getAdvertsStatusPublish())->orderBy('updated_at','DESC')->get();
+        $advertsFirst = AdvertModel::take(6)->where('adverts_status_id', AdvertsStatusModel::getAdvertsStatusPublish())->orderBy('updated_at','DESC')->get();
+//        $advertsSecond = AdvertModel::take(3)->where('adverts_status_id', AdvertsStatusModel::getAdvertsStatusPublish())->orderBy('updated_at','DESC')->get();
 //        $advertsSecond = AdvertModel::skip(3)->take(3)->get();
 //        $advertsThird = AdvertModel::skip(6)->take(3)->get();
 ////        var_dump(User::getCurrentUser()->isRoleAdmin());die();
